@@ -13,17 +13,24 @@
       --dark: #0f111a;
       --gray: #cccccc;
       --white: #ffffff;
+      --blue: #1e90ff;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
     body {
-      margin: 0;
       font-family: 'Fira Code', monospace;
       background: var(--dark);
       color: var(--gray);
       overflow-x: hidden;
     }
     header {
-      padding: 40px;
+      padding: 40px 20px;
       text-align: center;
+      position: relative;
+      background: linear-gradient(to right, #141e30, #243b55);
     }
     header h1 {
       color: var(--white);
@@ -47,29 +54,29 @@
       border: 1px solid var(--accent);
       padding: 10px 20px;
       border-radius: 8px;
-      transition: 0.3s;
+      transition: all 0.3s ease;
     }
     nav a:hover {
       background-color: var(--accent);
       color: var(--dark);
     }
-    section.hero {
-      height: 80vh;
+    .hero {
+      height: 85vh;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      background: radial-gradient(circle at 30% 30%, #1b1e30, #0f111a);
+      background: radial-gradient(circle at center, #1c1f2f, #0f111a);
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-    section.hero h2 {
+    .hero h2 {
       color: var(--white);
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
-    section.hero p {
+    .hero p {
       max-width: 600px;
       font-size: 1.1rem;
       color: var(--gray);
@@ -90,6 +97,22 @@
     .hero-content {
       z-index: 1;
       position: relative;
+    }
+    .terminal-box {
+      background: #0d0d0d;
+      border-radius: 10px;
+      margin-top: 40px;
+      width: 80%;
+      max-width: 600px;
+      padding: 20px;
+      color: #39ff14;
+      font-family: monospace;
+      box-shadow: 0 0 15px #00ffcc33;
+      z-index: 1;
+    }
+    .terminal-box span {
+      display: block;
+      margin-bottom: 8px;
     }
     footer {
       text-align: center;
@@ -115,8 +138,14 @@
   <section class="hero">
     <div class="matrix"><canvas id="matrix"></canvas></div>
     <div class="hero-content">
-      <h2>Building the future of secure AI and cloud systems.</h2>
-      <p>I design, build, and secure scalable systems at the intersection of artificial intelligence, cloud computing, and DevSecOps.</p>
+      <h2>Transforming Cloud Infrastructure & AI Security</h2>
+      <p>My work blends DevSecOps best practices, real-time AI integration, and next-gen system design into every cloud stack.</p>
+      <div class="terminal-box">
+        <span>~/sritej$ deploy --secure --ai</span>
+        <span>✅ DevSecMLOps initialized</span>
+        <span>✅ AI Pipeline secured</span>
+        <span>🚀 Ready for production</span>
+      </div>
     </div>
   </section>
 
