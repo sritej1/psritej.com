@@ -1,92 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sritej Panchumarthi – Research Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
-  <meta name="description" content="Research publications by Sritej Panchumarthi on DevSecOps, AI agents, and secure pipelines.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>www.psritej.com</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Fira Code', monospace;
+      background: #0f111a;
+      color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-image: radial-gradient(circle at 20% 20%, #1b1e30, #0f111a);
+    }
+    .container {
+      text-align: center;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid #1e90ff;
+      border-radius: 16px;
+      box-shadow: 0 0 20px #1e90ff33;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #00ffcc;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #ccc;
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+    .button {
+      margin: 0 15px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: 2px solid #1e90ff;
+      color: #1e90ff;
+      background: transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .button:hover {
+      background-color: #1e90ff;
+      color: #000;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Sritej Panchumarthi</h1>
-    <p>Researcher in DevSecOps, AI Agents, and Secure ML Pipelines</p>
-    <nav>
-      <a href="https://www.linkedin.com/in/sritej-panchumarthi" target="_blank">LinkedIn</a> |
-      <a href="https://www.techrxiv.org/users/933460" target="_blank">TechRxiv</a> |
-      <a href="sritej.bib" download>Download .bib</a>
-    </nav>
-  </header>
-
-  <main>
-    <section>
-      <h2>📄 DevSecMLOps: A Security Framework for Machine Learning Pipelines</h2>
-      <p><strong>DOI:</strong> <a href="https://doi.org/10.36227/techrxiv.175037181.12992346" target="_blank">10.36227/techrxiv.175037181.12992346</a></p>
-      <p>This paper proposes a DevSecOps framework tailored for ML pipelines. It addresses data, model, and infrastructure security using tools like SageMaker, IaC, and container scanning.</p>
-      <pre>@article{panchumarthi2025devsecmlops,
-  title={DevSecMLOps: A Security Framework for Machine Learning Pipelines},
-  author={Sritej Panchumarthi},
-  journal={TechRxiv},
-  year={2025},
-  doi={10.36227/techrxiv.175037181.12992346}
-}</pre>
-    </section>
-
-    <section>
-      <h2>📄 Embedding Security into Pipelines: A DevSecOps Blueprint</h2>
-      <p><strong>DOI:</strong> <a href="https://doi.org/10.36227/techrxiv.175022275.50175032" target="_blank">10.36227/techrxiv.175022275.50175032</a></p>
-      <p>This blueprint introduces CI/CD security best practices with GitLab CI, Snyk, Trivy, and secret scanning. A great practical guide for DevSecOps engineers.</p>
-      <pre>@article{panchumarthi2025devsecops,
-  title={Embedding Security into Pipelines: A DevSecOps Blueprint},
-  author={Sritej Panchumarthi},
-  journal={TechRxiv},
-  year={2025},
-  doi={10.36227/techrxiv.175022275.50175032}
-}</pre>
-    </section>
-
-    <section>
-      <h2>📄 Building an Artificial Intelligence Agent: A Step-by-Step Guide for Entry-Level Engineers</h2>
-      <p><strong>DOI:</strong> <a href="https://doi.org/10.36227/techrxiv.175259542.24481408" target="_blank">10.36227/techrxiv.175259542.24481408</a></p>
-      <p>This hands-on paper shows how entry-level engineers can build functional AI agents using Python, L5 architecture, and NLP pipelines.</p>
-      <pre>@article{panchumarthi2025aiguide,
-  title={Building an Artificial Intelligence Agent: A Step-by-Step Guide for Entry-Level Engineers},
-  author={Sritej Panchumarthi},
-  journal={TechRxiv},
-  year={2025},
-  doi={10.36227/techrxiv.175259542.24481408}
-}</pre>
-    </section>
-
-    <section>
-      <h2>📄 AI Agents and the Future of Work: A Strategic Overview for Software Engineers</h2>
-      <p><strong>DOI:</strong> <a href="https://doi.org/10.36227/techrxiv.175321895.56143977" target="_blank">10.36227/techrxiv.175321895.56143977</a></p>
-      <p>Discusses the evolving role of software engineers with the rise of AI agents and provides strategies to remain future-proof in the tech world.</p>
-      <pre>@article{panchumarthi2025futureai,
-  title={AI Agents and the Future of Work: A Strategic Overview for Software Engineers},
-  author={Sritej Panchumarthi},
-  journal={TechRxiv},
-  year={2025},
-  doi={10.36227/techrxiv.175321895.56143977}
-}</pre>
-    </section>
-
-    <section>
-      <h2>📄 A Comparative Evaluation of AI Coding Assistants: Performance, Limitations, and Use Cases</h2>
-      <p><strong>DOI:</strong> <a href="https://doi.org/10.36227/techrxiv.175321961.11008476" target="_blank">10.36227/techrxiv.175321961.11008476</a></p>
-      <p>This paper benchmarks ChatGPT, GitHub Copilot, and Amazon CodeWhisperer on various coding tasks, highlighting their pros, cons, and ideal use cases.</p>
-      <pre>@article{panchumarthi2025aicoding,
-  title={A Comparative Evaluation of AI Coding Assistants: Performance, Limitations, and Use Cases},
-  author={Sritej Panchumarthi},
-  journal={TechRxiv},
-  year={2025},
-  doi={10.36227/techrxiv.175321961.11008476}
-}</pre>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Sritej Panchumarthi. All rights reserved.</p>
-  </footer>
+  <div class="container">
+    <h1>&lt; Hello, I'm Sritej /&gt;</h1>
+    <p>Cloud Security | DevSecOps | AI Research Engineer</p>
+    <a href="https://psritej.com/about-me" class="button">About Me</a>
+    <a href="https://research.psritej.com" class="button">Research</a>
+  </div>
 </body>
 </html>
