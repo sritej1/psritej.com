@@ -114,6 +114,25 @@
       display: block;
       margin-bottom: 8px;
     }
+    .cta-buttons {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-buttons a {
+      background: var(--accent);
+      color: #000;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+    .cta-buttons a:hover {
+      transform: scale(1.05);
+    }
     footer {
       text-align: center;
       padding: 20px;
@@ -138,13 +157,18 @@
   <section class="hero">
     <div class="matrix"><canvas id="matrix"></canvas></div>
     <div class="hero-content">
-      <h2>Transforming Cloud Infrastructure & AI Security</h2>
-      <p>My work blends DevSecOps best practices, real-time AI integration, and next-gen system design into every cloud stack.</p>
+      <h2>Innovating Cloud and AI Security</h2>
+      <p>DevSecOps practitioner blending secure cloud automation with real-time AI innovation. Transforming complex systems into intelligent, scalable, and secure solutions.</p>
       <div class="terminal-box">
-        <span>~/sritej$ deploy --secure --ai</span>
-        <span>✅ DevSecMLOps initialized</span>
-        <span>✅ AI Pipeline secured</span>
-        <span>🚀 Ready for production</span>
+        <span>~/psritej$ ai --deploy --secure</span>
+        <span>✅ ML pipelines encrypted</span>
+        <span>✅ Cloud security policies applied</span>
+        <span>🚀 Launching intelligent infrastructure...</span>
+      </div>
+      <div class="cta-buttons">
+        <a href="/about-me.html">Know Me</a>
+        <a href="/research.html">My Research</a>
+        <a href="/contact.html">Connect</a>
       </div>
     </div>
   </section>
