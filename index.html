@@ -3,18 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sritej Panchumarthi – Cloud & AI Engineer</title>
-  <meta name="description" content="The portfolio of Sritej Panchumarthi – specializing in DevSecOps, Cloud Security, and AI Engineering." />
-  <meta name="robots" content="index, follow">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" />
+  <title>Sritej Panchumarthi | Cloud Security & AI</title>
+  <meta name="description" content="Cloud Security and AI Research Portfolio of Sritej Panchumarthi. Explore DevSecOps, intelligent infrastructure, and secure AI pipelines." />
+  <meta name="keywords" content="Sritej, Panchumarthi, Cloud Security, DevSecOps, AI Research, ML Pipelines, Cybersecurity Portfolio" />
+  <meta name="author" content="Sritej Panchumarthi" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --accent: #00ffcc;
-      --dark: #0f111a;
-      --gray: #cccccc;
-      --white: #ffffff;
-      --blue: #1e90ff;
-    }
     * {
       box-sizing: border-box;
       margin: 0;
@@ -22,175 +16,103 @@
     }
     body {
       font-family: 'Fira Code', monospace;
-      background: var(--dark);
-      color: var(--gray);
+      background: black;
+      color: #00ffcc;
       overflow-x: hidden;
     }
-    header {
-      padding: 40px 20px;
-      text-align: center;
-      position: relative;
-      background: linear-gradient(to right, #141e30, #243b55);
-    }
-    header h1 {
-      color: var(--white);
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: var(--accent);
-    }
-    nav {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: var(--accent);
-      text-decoration: none;
-      border: 1px solid var(--accent);
-      padding: 10px 20px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-    nav a:hover {
-      background-color: var(--accent);
-      color: var(--dark);
-    }
-    .hero {
-      height: 85vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      background: radial-gradient(circle at center, #1c1f2f, #0f111a);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero h2 {
-      color: var(--white);
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      max-width: 600px;
-      font-size: 1.1rem;
-      color: var(--gray);
-    }
     .matrix {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
-      z-index: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       background: black;
-      pointer-events: none;
+      z-index: -1;
     }
-    canvas {
-      display: block;
-    }
-    .hero-content {
-      z-index: 1;
+    .overlay {
       position: relative;
-    }
-    .terminal-box {
-      background: #0d0d0d;
-      border-radius: 10px;
-      margin-top: 40px;
-      width: 80%;
-      max-width: 600px;
-      padding: 20px;
-      color: #39ff14;
-      font-family: monospace;
-      box-shadow: 0 0 15px #00ffcc33;
-      z-index: 1;
-    }
-    .terminal-box span {
-      display: block;
-      margin-bottom: 8px;
-    }
-    .cta-buttons {
-      margin-top: 30px;
+      min-height: 100vh;
       display: flex;
-      gap: 20px;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
-    }
-    .cta-buttons a {
-      background: var(--accent);
-      color: #000;
-      text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-weight: bold;
-      transition: transform 0.3s;
-    }
-    .cta-buttons a:hover {
-      transform: scale(1.05);
-    }
-    footer {
       text-align: center;
-      padding: 20px;
-      color: #666;
-      font-size: 0.9rem;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      color: #ccc;
+      margin-bottom: 2rem;
+    }
+    .terminal {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1.5rem;
+      border-radius: 12px;
+      color: #00ffcc;
+      box-shadow: 0 0 15px #00ffcc55;
+      margin-bottom: 2rem;
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      background: transparent;
+      color: #00ffcc;
+      border: 2px solid #00ffcc;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+    .button:hover {
+      background: #00ffcc;
+      color: black;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Sritej Panchumarthi</h1>
-    <p>Cloud Security | DevSecOps | AI Research</p>
-    <nav>
-      <a href="/about-me.html">About Me</a>
-      <a href="/research.html">Research</a>
-      <a href="/projects.html">Projects</a>
-      <a href="/resume.html">Resume</a>
-      <a href="/contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div class="matrix"><canvas id="matrix"></canvas></div>
-    <div class="hero-content">
-      <h2>Innovating Cloud and AI Security</h2>
-      <p>DevSecOps practitioner blending secure cloud automation with real-time AI innovation. Transforming complex systems into intelligent, scalable, and secure solutions.</p>
-      <div class="terminal-box">
-        <span>~/psritej$ ai --deploy --secure</span>
-        <span>✅ ML pipelines encrypted</span>
-        <span>✅ Cloud security policies applied</span>
-        <span>🚀 Launching intelligent infrastructure...</span>
-      </div>
-      <div class="cta-buttons">
-        <a href="/about-me.html">Know Me</a>
-        <a href="/research.html">My Research</a>
-        <a href="/contact.html">Connect</a>
-      </div>
+  <canvas class="matrix"></canvas>
+  <div class="overlay">
+    <h1>Innovating Cloud and AI Security</h1>
+    <h2>DevSecOps practitioner blending secure cloud automation with real-time AI innovation</h2>
+    <div class="terminal">
+      <p>~/psritej$ <span style="color: #0f0;">ai --deploy --secure</span></p>
+      <ul style="list-style: none; color: #0f0;">
+        <li>✅ ML pipelines encrypted</li>
+        <li>✅ Cloud security policies applied</li>
+        <li>🚀 Launching intelligent infrastructure...</li>
+      </ul>
     </div>
-  </section>
-
-  <footer>
-    &copy; 2025 Sritej Panchumarthi – All Rights Reserved
-  </footer>
-
+    <div class="buttons">
+      <a href="/about-me.html" class="button">About Me</a>
+      <a href="/research.html" class="button">Research</a>
+      <a href="/projects.html" class="button">Projects</a>
+      <a href="/resume.html" class="button">Resume</a>
+      <a href="/contact.html" class="button">Contact</a>
+    </div>
+  </div>
   <script>
-    const canvas = document.getElementById("matrix");
+    const canvas = document.querySelector(".matrix");
     const ctx = canvas.getContext("2d");
-    canvas.height = window.innerHeight;
+
     canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    const letters = "01";
-    const fontSize = 14;
+    const binary = "01";
+    const fontSize = 16;
     const columns = canvas.width / fontSize;
-    const drops = [];
-
-    for (let x = 0; x < columns; x++) {
-      drops[x] = 1;
-    }
+    const drops = Array(Math.floor(columns)).fill(1);
 
     function draw() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
@@ -199,7 +121,7 @@
       ctx.font = fontSize + "px Fira Code";
 
       for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
+        const text = binary[Math.floor(Math.random() * binary.length)];
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
@@ -208,8 +130,12 @@
         drops[i]++;
       }
     }
-    setInterval(draw, 35);
-    window.addEventListener("resize", () => location.reload());
+
+    setInterval(draw, 33);
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
   </script>
 </body>
 </html>
