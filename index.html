@@ -39,6 +39,7 @@
       display: flex;
       justify-content: center;
       gap: 20px;
+      flex-wrap: wrap;
     }
     nav a {
       color: var(--accent);
@@ -60,6 +61,8 @@
       flex-direction: column;
       background: radial-gradient(circle at 30% 30%, #1b1e30, #0f111a);
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
     section.hero h2 {
       color: var(--white);
@@ -70,6 +73,26 @@
       max-width: 600px;
       font-size: 1.1rem;
       color: var(--gray);
+    }
+    .hero-graphic {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: url('https://www.transparenttextures.com/patterns/cubes.png');
+      opacity: 0.05;
+      top: 0;
+      right: 0;
+      background-size: contain;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0,255,204,0.3), transparent);
+      top: 30%;
+      left: 10%;
+      border-radius: 50%;
+      filter: blur(60px);
     }
     footer {
       text-align: center;
@@ -93,6 +116,8 @@
   </header>
 
   <section class="hero">
+    <div class="hero-graphic"></div>
+    <div class="hero-glow"></div>
     <h2>Building the future of secure AI and cloud systems.</h2>
     <p>I design, build, and secure scalable systems at the intersection of artificial intelligence, cloud computing, and DevSecOps.</p>
   </section>
