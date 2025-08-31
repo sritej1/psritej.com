@@ -9,76 +9,16 @@
   <meta name="author" content="Sritej Panchumarthi" />
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Fira Code', monospace;
-      background: black;
-      color: #00ffcc;
-      overflow-x: hidden;
-    }
-    .matrix {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: black;
-      z-index: -1;
-    }
-    .overlay {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-    }
-    h1 {
-      font-size: 3rem;
-      color: #ffffff;
-      margin-bottom: 1rem;
-    }
-    h2 {
-      font-size: 1.5rem;
-      color: #ccc;
-      margin-bottom: 2rem;
-    }
-    .terminal {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 1.5rem;
-      border-radius: 12px;
-      color: #00ffcc;
-      box-shadow: 0 0 15px #00ffcc55;
-      margin-bottom: 2rem;
-    }
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-    .button {
-      padding: 12px 24px;
-      font-size: 1rem;
-      background: transparent;
-      color: #00ffcc;
-      border: 2px solid #00ffcc;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.3s ease;
-    }
-    .button:hover {
-      background: #00ffcc;
-      color: black;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Fira Code', monospace; background: black; color: #00ffcc; overflow-x: hidden; }
+    .matrix { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: black; z-index: -1; }
+    .overlay { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+    h1 { font-size: 3rem; color: #ffffff; margin-bottom: 1rem; }
+    h2 { font-size: 1.5rem; color: #ccc; margin-bottom: 2rem; }
+    .terminal { background: rgba(0, 0, 0, 0.7); padding: 1.5rem; border-radius: 12px; color: #00ffcc; box-shadow: 0 0 15px #00ffcc55; margin-bottom: 2rem; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2rem; }
+    .button { padding: 12px 24px; font-size: 1rem; background: transparent; color: #00ffcc; border: 2px solid #00ffcc; border-radius: 8px; cursor: pointer; text-decoration: none; transition: 0.3s ease; }
+    .button:hover { background: #00ffcc; color: black; }
   </style>
 </head>
 <body>
@@ -102,6 +42,7 @@
       <a href="/contact.html" class="button">Contact</a>
     </div>
   </div>
+
   <script>
     const canvas = document.querySelector(".matrix");
     const ctx = canvas.getContext("2d");
@@ -136,6 +77,12 @@
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     });
+
+    // ✅ Redirect rule
+    // If this site is reached directly at root, auto-redirect to block page
+    if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+      window.location.replace("/networkblock.html");
+    }
   </script>
 </body>
 </html>
