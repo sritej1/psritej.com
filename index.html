@@ -2,86 +2,692 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sritej Panchumarthi – Cloud Security & AI</title>
-  <meta name="description" content="DevSecOps engineer building secure, scalable AI and cloud systems. Portfolio, projects, research, and contact." />
-  <meta property="og:title" content="Sritej Panchumarthi – Cloud Security & AI">
-  <meta property="og:description" content="DevSecOps · AWS · Kubernetes · AI Agents · Secure Pipelines">
-  <meta property="og:image" content="https://psritej.com/assets/og-image.jpg">
-  <meta property="og:url" content="https://psritej.com/">
-  <link rel="canonical" href="https://psritej.com/">
-  <link rel="preload" as="style" href="/css/style.css">
-  <link rel="stylesheet" href="/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sritej Panchumarthi – Cloud Security, DevSecOps & AI Research</title>
+
+  <!-- Primary SEO -->
+  <meta name="description" content="Official website of Sritej Panchumarthi – Senior DevOps Engineer specializing in AWS, Cloud Security, DevSecOps, and AI/ML research. Explore my work, resume, projects, and research publications." />
+  <meta name="keywords" content="Sritej, Panchumarthi, Cloud Security, DevSecOps, AWS, Kubernetes, AI Agents, DevSecMLOps, Senior DevOps Engineer, psritej" />
+  <meta name="author" content="Sritej Panchumarthi" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sritej Panchumarthi – Cloud Security & AI Research" />
+  <meta property="og:description" content="Senior DevOps Engineer and AI researcher. High-availability AWS, secure CI/CD pipelines, and practical AI/ML frameworks." />
+  <meta property="og:url" content="https://psritej.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://psritej.com/assets/og-image.jpg" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://psritej.com/" />
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:#05070d;
+      --bg2:#0b0f17;
+      --panel:#111827;
+      --border:#1f2937;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#00ffcc;
+      --accent2:#38bdf8;
+      --chip:#111827;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html, body {
+      height:100%;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      scroll-behavior:smooth;
+    }
+    a { color:var(--accent); text-decoration:none; }
+    img { max-width:100%; display:block; }
+
+    .container { max-width:1100px; margin:0 auto; padding:20px 20px 60px; }
+
+    header.site-header {
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(16px);
+      background:linear-gradient(to right, rgba(5,7,13,0.95), rgba(15,23,42,0.9));
+      border-bottom:1px solid rgba(31,41,55,0.8);
+    }
+    .header-inner {
+      max-width:1100px;
+      margin:0 auto;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:.03em;
+    }
+    .brand-logo {
+      width:28px; height:28px;
+      border-radius:8px;
+      background:radial-gradient(circle at 20% 0%, var(--accent), transparent 60%);
+      display:flex; align-items:center; justify-content:center;
+      font-family:"Fira Code", monospace;
+      font-size:14px;
+      color:#020617;
+      border:1px solid rgba(148,163,184,0.7);
+      box-shadow:0 0 24px rgba(34,211,238,0.35);
+    }
+    nav.main-nav {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      font-size:0.9rem;
+    }
+    nav.main-nav a {
+      padding:6px 10px;
+      border-radius:999px;
+      color:var(--muted);
+      border:1px solid transparent;
+      transition:0.2s;
+    }
+    nav.main-nav a:hover {
+      color:var(--accent);
+      border-color:rgba(56,189,248,0.5);
+      background:rgba(15,23,42,0.7);
+    }
+
+    canvas.matrix-bg {
+      position:fixed;
+      inset:0;
+      width:100vw;
+      height:100vh;
+      z-index:-1;
+      background:black;
+    }
+
+    section.hero {
+      min-height:75vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:56px 20px 40px;
+    }
+    .hero-inner {
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+      gap:26px;
+      align-items:center;
+    }
+    .hero-title {
+      font-size:clamp(1.9rem, 4vw, 2.8rem);
+      line-height:1.1;
+      margin-bottom:10px;
+    }
+    .hero-highlight {
+      color:var(--accent);
+      font-family:"Fira Code", monospace;
+      font-size:0.95rem;
+      margin-bottom:12px;
+    }
+    .hero-text {
+      color:var(--muted);
+      margin-bottom:20px;
+      font-size:0.95rem;
+    }
+    .hero-cta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:18px;
+    }
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 18px;
+      border-radius:999px;
+      font-size:0.9rem;
+      font-weight:600;
+      border:none;
+      cursor:pointer;
+      text-decoration:none;
+      transition:0.25s;
+    }
+    .btn-primary {
+      background:var(--accent);
+      color:#020617;
+      box-shadow:0 0 0 0 rgba(34,211,238,0.45);
+    }
+    .btn-primary:hover {
+      transform:translateY(-1px);
+      box-shadow:0 14px 40px -14px rgba(34,211,238,0.5);
+    }
+    .btn-ghost {
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(34,197,235,0.8);
+    }
+    .chip-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
+    .chip {
+      background:var(--chip);
+      border-radius:999px;
+      border:1px solid rgba(55,65,81,0.9);
+      padding:4px 10px;
+      font-size:0.8rem;
+      color:#cbd5f5;
+    }
+
+    .hero-terminal {
+      background:radial-gradient(circle at 0 0, rgba(56,189,248,0.35), transparent 60%), var(--panel);
+      border-radius:18px;
+      border:1px solid rgba(15,23,42,0.9);
+      padding:18px 16px;
+      font-family:"Fira Code", monospace;
+      color:#bbf7d0;
+      box-shadow:0 0 24px rgba(8,47,73,0.9);
+      font-size:0.8rem;
+    }
+    .hero-terminal-header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:10px;
+      color:var(--muted);
+      font-size:0.75rem;
+    }
+    .dots {
+      display:flex;
+      gap:6px;
+    }
+    .dot { width:8px;height:8px;border-radius:50%; }
+    .dot.red{background:#f97373;}
+    .dot.yellow{background:#facc15;}
+    .dot.green{background:#22c55e;}
+
+    .hero-terminal-body span.prompt { color:#4ade80; }
+
+    main { background:linear-gradient(to bottom, rgba(15,23,42,0.96), #020617); }
+    section.block { padding:40px 20px 10px; }
+    .block-inner { max-width:1100px; margin:0 auto; }
+    .block-title { font-size:1.3rem; margin-bottom:8px; }
+    .block-subtitle { color:var(--muted); font-size:0.9rem; margin-bottom:18px; }
+    .grid { display:grid; gap:16px; }
+    .grid-2 { grid-template-columns:repeat(1,minmax(0,1fr)); }
+
+    @media (min-width:900px) {
+      .hero-inner { grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); }
+      .grid-2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+
+    .card {
+      background:linear-gradient(145deg, #020617, #020617 40%, #020617 60%, #020617);
+      border-radius:16px;
+      border:1px solid rgba(31,41,55,0.9);
+      padding:18px 16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before {
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:radial-gradient(
+        circle at var(--mx, 120%) var(--my, 0%),
+        rgba(56,189,248,0.25),
+        transparent 55%
+      );
+      opacity:0;
+      transition:opacity .25s;
+      pointer-events:none;
+    }
+    .card:hover::before { opacity:1; }
+    .card h3 { font-size:1.05rem; margin-bottom:4px; }
+    .card-meta { color:var(--muted); font-size:0.8rem; margin-bottom:8px; }
+    .card ul { margin-left:16px; font-size:0.85rem; color:#d1d5db; }
+    .card ul li { margin-bottom:4px; }
+
+    .resume-download {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:10px;
+    }
+    .bib-link {
+      font-family:"Fira Code", monospace;
+      font-size:0.8rem;
+    }
+
+    .blog-cta {
+      text-align:center;
+      padding:26px 16px 40px;
+    }
+    .blog-cta p { color:var(--muted); font-size:0.9rem; margin-bottom:10px; }
+
+    footer.site-footer {
+      text-align:center;
+      padding:20px;
+      font-size:0.8rem;
+      color:var(--muted);
+      border-top:1px solid rgba(31,41,55,0.8);
+      background:#020617;
+    }
+
+    @media (max-width:768px) {
+      .hero-inner { grid-template-columns:1fr; text-align:center; }
+      .hero-terminal { margin-top:12px; }
+      header.site-header { position:sticky; }
+      .header-inner { flex-direction:column; align-items:flex-start; }
+      nav.main-nav { justify-content:flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      canvas.matrix-bg { display:none !important; }
+    }
+  </style>
+
+  <!-- JSON-LD: WebSite + Person -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Sritej Panchumarthi",
-    "jobTitle":"Senior DevOps Engineer",
-    "url":"https://psritej.com",
-    "sameAs":["https://github.com/sritej1","https://www.linkedin.com/in/psritej"]
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "psritej.com",
+    "url": "https://psritej.com/",
+    "author": {
+      "@type": "Person",
+      "name": "Sritej Panchumarthi",
+      "jobTitle": "Senior DevOps Engineer",
+      "url": "https://psritej.com/",
+      "sameAs": [
+        "https://github.com/sritej1",
+        "https://www.linkedin.com/in/psritej"
+      ]
+    }
   }
   </script>
-  <style>
-    /* tiny page-specific accent tweaks */
-    .hero .cta .btn{box-shadow:0 0 0 0 rgba(0,255,204,0.4);transition:transform .2s, box-shadow .6s}
-    .hero .cta .btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px -8px rgba(0,255,204,0.3)}
-  </style>
 </head>
 <body>
-  <canvas class="bg reduce-hide" aria-hidden="true"></canvas>
+  <!-- Matrix background -->
+  <canvas class="matrix-bg" aria-hidden="true"></canvas>
 
-  <div class="container">
-    <div class="header">
-      <div style="display:flex;align-items:center;gap:10px">
-        <img src="/assets/logo.svg" alt="SP logo" width="28" height="28" loading="lazy">
-        <strong>Sritej Panchumarthi</strong>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo">SP</div>
+        <div>
+          <div>Sritej Panchumarthi</div>
+          <div style="font-size:0.75rem;color:var(--muted);">
+            Senior DevOps Engineer · Cloud Security · DevSecOps · AI Research
+          </div>
+        </div>
       </div>
-      <nav class="nav">
-        <a href="/about-me.html">About</a>
-        <a href="/projects.html">Projects</a>
-        <a href="/research.html">Research</a>
-        <a href="/resume.html">Resume</a>
+      <nav class="main-nav">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#resume">Resume</a>
         <a href="/contact.html">Contact</a>
+        <a href="#blog">Blog</a>
       </nav>
     </div>
-  </div>
+  </header>
 
-  <section class="hero">
-    <div class="container">
-      <h1>Transforming Cloud & AI Security</h1>
-      <p>Secure-by-default CI/CD, Kubernetes, and serverless on AWS. Research in DevSecMLOps and AI agents—delivered with high performance and resilience.</p>
-      <div class="cta">
-        <a class="btn" href="/projects.html">Explore Projects</a>
-        <a class="btn ghost" href="/research.html">Read Research</a>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-highlight">~/psritej$ deploy --env prod --secure</div>
+          <h1 class="hero-title">
+            Architecting secure, high-availability AWS and AI infrastructure.
+          </h1>
+          <p class="hero-text">
+            Results-driven Senior DevOps Engineer / SRE with 6+ years designing and automating multi-region,
+            production-grade systems for Dish Wireless (EchoStar). Skilled in AWS EKS, GitLab CI/CD, IaC,
+            SSO integration, and observability—improving uptime, release velocity, and compliance with
+            security-as-code automation. :contentReference[oaicite:1]{index=1}
+          </p>
+          <div class="hero-cta">
+            <!-- Update path to your actual PDF -->
+            <a class="btn btn-primary" href="/assets/resume.pdf" target="_blank" rel="noopener">
+              Download Resume (PDF)
+            </a>
+            <a class="btn btn-ghost" href="#research">View Research Papers</a>
+          </div>
+          <div class="chip-row">
+            <span class="chip">AWS · EKS · Lambda · CloudFront</span>
+            <span class="chip">GitLab CI · Docker · IaC</span>
+            <span class="chip">Security Automation · PCI-DSS</span>
+            <span class="chip">Dynatrace · Lighthouse</span>
+          </div>
+        </div>
+
+        <aside class="hero-terminal" aria-label="Live terminal preview">
+          <div class="hero-terminal-header">
+            <div class="dots">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+            </div>
+            <span>sritej@boost-cloud:~</span>
+          </div>
+          <div class="hero-terminal-body">
+            <div><span class="prompt">$ pipeline run --project boostmobile --env prod</span></div>
+            <div>→ Validating IaC, TLS, WAF & bot defense rules…</div>
+            <div>→ Running Snyk, OWASP, PCI-DSS compliance gates…</div>
+            <div>→ Shipping containers via GitLab CI to EKS & Lambda@Edge…</div>
+            <div>✅ Status: Production rollout completed with full observability in Dynatrace.</div>
+          </div>
+        </aside>
       </div>
-      <div class="chips" style="margin-top:20px;justify-content:center">
-        <span class="chip">AWS</span><span class="chip">EKS</span><span class="chip">GitLab CI</span>
-        <span class="chip">Terraform</span><span class="chip">Trivy</span><span class="chip">Snyk</span>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="block" id="about">
+      <div class="block-inner">
+        <h2 class="block-title">About Me</h2>
+        <p class="block-subtitle">
+          I own infrastructure end-to-end—from Dev & QA through Test, Prod, and sandbox—so teams can ship fast
+          without losing security or stability. :contentReference[oaicite:2]{index=2}
+        </p>
+        <div class="grid grid-2">
+          <article class="card">
+            <h3>Cloud & DevSecOps</h3>
+            <p class="card-meta">AWS · EKS · GitLab CI · SSO · WAF</p>
+            <ul>
+              <li>Architect and automate scalable AWS infrastructure using EKS, Lambda, CloudFront, Route 53, WAF, DynamoDB, ElastiCache, and Firehose supporting millions of user sessions monthly.</li>
+              <li>Design and maintain SSO integrations for AEM & Magento, ensuring seamless cross-environment authentication and session continuity. :contentReference[oaicite:3]{index=3}</li>
+              <li>Embed Snyk and OWASP/PCI-DSS validation gates into GitLab CI/CD pipelines to enforce security-as-code.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Automation & Observability</h3>
+            <p class="card-meta">Python · Node.js · Dynatrace · Lighthouse</p>
+            <ul>
+              <li>Automate DNS and TLS management via Route 53 and DigiCert APIs to achieve zero-downtime renewals. :contentReference[oaicite:4]{index=4}</li>
+              <li>Implement Dynatrace monitoring, custom dashboards, and Lighthouse audits for performance visibility and alerting.</li>
+              <li>Author Node.js and Python automation for Jira, SCR creation, and pipeline-driven approvals, reducing manual toil.</li>
+            </ul>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="container reveal card" style="margin:20px auto">
-    <h2 style="margin:0 0 10px">Featured</h2>
-    <p class="muted" style="color:var(--muted)">Raspberry Pi 5 gateway (AdGuard + NextDNS), secure GitLab CI templates, and EKS blue-green deployments with rollback.</p>
-    <div class="cta" style="margin-top:16px">
-      <a class="btn ghost" href="/projects.html#gateway">Pi5 Gateway</a>
-      <a class="btn ghost" href="/projects.html#ci">Secure CI</a>
-      <a class="btn ghost" href="/projects.html#eks">EKS Zero-downtime</a>
-    </div>
-  </div>
+    <!-- EXPERIENCE -->
+    <section class="block" id="experience">
+      <div class="block-inner">
+        <h2 class="block-title">Professional Experience</h2>
+        <p class="block-subtitle">Where I’ve been building, automating, and securing systems.</p>
 
-  <footer class="footer">© 2025 Sritej Panchumarthi · <a href="/sitemap.xml">Sitemap</a></footer>
+        <div class="grid">
+          <article class="card">
+            <h3>Senior DevOps Engineer – Dish Wireless LLC</h3>
+            <p class="card-meta">Aug 2022 – Present · Denver, CO</p>
+            <ul>
+              <li>Serve as individual contributor managing complete infrastructure for Boost Mobile websites across Dev, QA, Test, Prod, and sandbox environments.</li>
+              <li>Architected and automated AWS infrastructure with EKS, Lambda, CloudFront, Route 53, WAF, DynamoDB, ElastiCache, and Firehose, supporting millions of user sessions monthly.</li>
+              <li>Built and managed GitLab CI/CD pipelines with integrated Snyk scanning and OWASP/PCI-DSS compliance validation gates.</li>
+              <li>Deployed and tuned F5 WAF rules & bot defense baselines for application-layer protection.</li>
+              <li>Implemented Dynatrace monitoring, dashboards, and Lighthouse performance audits for stronger observability.</li>
+              <li>Built custom Docker images for secure, cache-optimized builds—reducing CI runtimes by ~35%.</li>
+            </ul>
+          </article>
 
-  <script type="module" defer src="/js/app.js"></script>
-  <script type="module" defer src="/js/fx-matrix.js"></script>
+          <article class="card">
+            <h3>Graduate Public Service Intern – Project Manager</h3>
+            <p class="card-meta">State of Illinois · Aug 2020 – Dec 2021 · Springfield, IL</p>
+            <ul>
+              <li>Oversaw modernization projects under the Graduate Public Service Internship program.</li>
+              <li>Implemented Agile delivery dashboards and reporting automations using Jira and ServiceNow.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Associate Professional – Implementation</h3>
+            <p class="card-meta">Sutherland Global Services · Jan 2018 – Aug 2019 · Hyderabad, India</p>
+            <ul>
+              <li>Built and managed on-prem and Azure virtual servers to host hospital management applications.</li>
+              <li>Ensured HIPAA-compliant data transfer and validated HL7 segments between internal & external apps.</li>
+              <li>Automated scaling of VM clusters based on workloads, improving uptime and resource efficiency by ~20%.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="block" id="projects">
+      <div class="block-inner">
+        <h2 class="block-title">Key Projects</h2>
+        <p class="block-subtitle">A snapshot of systems I’ve designed, owned, or modernized.</p>
+
+        <div class="grid grid-2">
+          <article class="card">
+            <h3>Boost Mobile Cloud Infrastructure Modernization</h3>
+            <p class="card-meta">AWS · EKS · CloudFront · GitLab CI · F5 WAF</p>
+            <ul>
+              <li>Architected and operated complete AWS infrastructure for Boost Mobile websites (Dev → Prod).</li>
+              <li>Integrated SSO for AEM & Magento, automated deployments through GitLab CI/CD with Snyk and OWASP/PCI-DSS compliance gates.</li>
+              <li>Managed security via F5 WAF, DNS/TLS automation, and Dynatrace observability. :contentReference[oaicite:5]{index=5}</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Boost Mobile SMB Infrastructure</h3>
+            <p class="card-meta">Multi-Account AWS · API Gateway · WAF · Firehose</p>
+            <ul>
+              <li>Designed and implemented multi-account AWS architecture for the SMB portal with full individual ownership.</li>
+              <li>Delivered SSO integration, observability, and compliance automation while optimizing security and scalability.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>E911 Address Validation & Tracking Platform</h3>
+            <p class="card-meta">Lambda@Edge · API Gateway · Firehose · DynamoDB</p>
+            <ul>
+              <li>Developed secure backend services for E911 emergency address validation and tracking pixel analytics.</li>
+              <li>Built Lambda@Edge APIs with Firehose + DynamoDB pipelines and Dynatrace dashboards.</li>
+              <li>Integrated Snyk scanning and enforced OWASP/PCI-DSS rules for compliance. :contentReference[oaicite:6]{index=6}</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Healthcare Virtualization & Data Validation (AllScripts)</h3>
+            <p class="card-meta">Azure · Hyper-V · HL7 · HIPAA</p>
+            <ul>
+              <li>Built and managed on-prem and Azure virtual servers for hospital management systems.</li>
+              <li>Validated HL7 data flows and enforced HIPAA compliance across clinical integrations.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>psritej.com – Portfolio & Research Hub</h3>
+            <p class="card-meta">GitHub Pages · CI Workflows</p>
+            <ul>
+              <li>Static portfolio hosted via GitHub Pages with integrated CI workflows.</li>
+              <li>Showcases DevSecOps and AI/ML research with citation-friendly BibTeX support.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Raspberry Pi 5 DNS Firewall Gateway</h3>
+            <p class="card-meta">Raspberry Pi 5 · AdGuard · NextDNS · Netdata</p>
+            <ul>
+              <li>Built network-wide ad/malware filtering using NextDNS, AdGuard Home, and Netdata on Raspberry Pi 5.</li>
+              <li>Focused on privacy, monitoring, and secure-by-default DNS for home network devices.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="block" id="research">
+      <div class="block-inner">
+        <h2 class="block-title">Research & Publications (TechRxiv)</h2>
+        <p class="block-subtitle">
+          Practical, implementation-focused research on DevSecOps, ML security, AI agents, and national-scale cyber defense.
+        </p>
+
+        <div class="grid grid-2">
+          <article class="card">
+            <h3>Security Frameworks & Pipelines</h3>
+            <ul>
+              <li>
+                <strong>DevSecMLOps: A Security Framework for Machine Learning Pipelines</strong><br>
+                DOI: <a href="https://doi.org/10.36227/techrxiv.175037181.12992346" target="_blank" rel="noopener">10.36227/techrxiv.175037181.12992346</a>
+              </li>
+              <li>
+                <strong>Embedding Security into Pipelines: A DevSecOps Blueprint</strong><br>
+                DOI: <a href="https://doi.org/10.36227/techrxiv.175022275.50175032" target="_blank" rel="noopener">10.36227/techrxiv.175022275.50175032</a>
+              </li>
+              <li>
+                <strong>A National Cyber Defense Framework – Architecting Federated, AI-Powered, Zero-Trust Security at Scale</strong> (TechRxiv)
+              </li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>AI Agents & Coding Assistants</h3>
+            <ul>
+              <li>
+                <strong>Building an Artificial Intelligence Agent: A Step-by-Step Guide for Entry-Level Engineers</strong><br>
+                DOI: <a href="https://doi.org/10.36227/techrxiv.175259542.24481408" target="_blank" rel="noopener">10.36227/techrxiv.175259542.24481408</a>
+              </li>
+              <li>
+                <strong>AI Agents and the Future of Work: A Strategic Overview for Software Engineers</strong><br>
+                DOI: <a href="https://doi.org/10.36227/techrxiv.175321895.56143977" target="_blank" rel="noopener">10.36227/techrxiv.175321895.56143977</a>
+              </li>
+              <li>
+                <strong>A Comparative Evaluation of AI Coding Assistants: Performance, Limitations, and Use Cases</strong><br>
+                DOI: <a href="https://doi.org/10.36227/techrxiv.175321961.11008476" target="_blank" rel="noopener">10.36227/techrxiv.175321961.11008476</a>
+              </li>
+              <li>
+                <strong>Secure AI-to-AI Communication: A Framework for Trusted and Secure AI-to-AI Collaboration</strong> (TechRxiv)
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="resume-download">
+          <a class="btn btn-ghost" href="https://www.techrxiv.org/users/933460" target="_blank" rel="noopener">
+            View all on TechRxiv
+          </a>
+          <span class="bib-link">BibTeX: <a href="/sritej.bib" download>download sritej.bib</a></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME SECTION -->
+    <section class="block" id="resume">
+      <div class="block-inner">
+        <h2 class="block-title">Resume</h2>
+        <p class="block-subtitle">
+          High-level view of my profile, with a downloadable PDF for recruiters and hiring managers.
+        </p>
+        <div class="card">
+          <p>
+            Senior DevOps Engineer / SRE with strong AWS cloud architecture, CI/CD, security automation,
+            and observability experience. AWS Certified DevOps Engineer – Professional and Security – Specialty,
+            with hands-on work in PCI-DSS, WAF/Bot Defense, and high-availability infra for consumer-facing apps. :contentReference[oaicite:7]{index=7}
+          </p>
+          <div class="resume-download">
+            <a class="btn btn-primary" href="/assets/resume.pdf" target="_blank" rel="noopener">
+              Download Full Resume (PDF)
+            </a>
+            <a class="btn btn-ghost" href="#experience">Jump to Experience</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG CTA -->
+    <section class="block" id="blog">
+      <div class="block-inner blog-cta">
+        <h2 class="block-title">Blog (Coming Soon)</h2>
+        <p>
+          I’ll be writing about real-world DevSecOps patterns, AWS architectures, AI agents in production,
+          and secure automation that junior engineers can actually implement.
+        </p>
+        <a class="btn btn-primary" href="/blog.html">Go to Blog</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    © 2025 Sritej Panchumarthi · <a href="/sitemap.xml">Sitemap</a> · <a href="/contact.html">Contact</a>
+  </footer>
+
+  <!-- Matrix effect -->
   <script>
-    // attach matrix after module loads
-    import('/js/fx-matrix.js').then(mod => {
-      const bg = document.querySelector('canvas.bg');
-      if(bg) mod.startMatrix(bg);
+    const canvas = document.querySelector(".matrix-bg");
+    if (canvas && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const ctx = canvas.getContext("2d");
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener("resize", resize);
+
+      const chars = "01";
+      const fontSize = 16;
+      let columns = canvas.width / fontSize;
+      let drops = Array(Math.floor(columns)).fill(1);
+
+      let running = true;
+      document.addEventListener("visibilitychange", () => {
+        running = !document.hidden;
+      });
+
+      function draw() {
+        if (!running) {
+          requestAnimationFrame(draw);
+          return;
+        }
+        ctx.fillStyle = "rgba(0, 0, 0, 0.06)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#00ffcc";
+        ctx.font = fontSize + "px Fira Code";
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = chars[Math.floor(Math.random() * chars.length)];
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    }
+
+    // Card hover light following mouse
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('pointermove', e => {
+        const rect = card.getBoundingClientRect();
+        const mx = ((e.clientX - rect.left) / rect.width) * 100;
+        const my = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mx', mx + '%');
+        card.style.setProperty('--my', my + '%');
+      });
     });
   </script>
 </body>

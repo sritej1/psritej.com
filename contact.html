@@ -1,36 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact – Sritej Panchumarthi</title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="description" content="Contact information for Sritej Panchumarthi, including email and LinkedIn.">
+  <meta name="description" content="Contact page for Sritej Panchumarthi – Senior DevOps Engineer and Cloud Security specialist." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#05070d;--panel:#0b1120;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;--accent:#00ffcc;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
+    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+    .card{
+      max-width:480px;width:100%;background:radial-gradient(circle at 0 0,rgba(56,189,248,0.3),transparent 55%),var(--panel);
+      border-radius:18px;border:1px solid var(--border);padding:24px 22px;box-shadow:0 24px 60px rgba(15,23,42,0.9);
+    }
+    h1{font-size:1.6rem;margin-bottom:6px}
+    p{font-size:0.95rem;color:var(--muted);margin-bottom:14px}
+    .field{margin-top:10px;font-size:0.9rem}
+    .label{font-weight:600;margin-bottom:2px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .chip{border-radius:999px;border:1px solid #1f2937;padding:4px 10px;font-size:0.8rem;color:#cbd5f5;background:#020617}
+    footer{text-align:center;color:var(--muted);font-size:0.8rem;margin-top:18px}
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Sritej Panchumarthi</h1>
-    <p>DevSecOps | Cloud Security | Research & Engineering</p>
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="about-me.html">About Me</a> |
-      <a href="resume.html">Resume</a> |
-      <a href="work.html">Work</a> |
-      <a href="contact.html">Contact</a> |
-      <a href="https://research.psritej.com" target="_blank">Research</a>
-    </nav>
-  </header>
+  <div class="wrap">
+    <div>
+      <div class="card">
+        <h1>Contact</h1>
+        <p>If you’d like to talk about roles, collaboration, or research, feel free to reach out.</p>
 
-  <main style="max-width: 700px; margin: 40px auto; text-align: center;">
-    <h2>📬 Get in Touch</h2>
-    <p>I'd love to connect with professionals, researchers, and engineers working in cloud, DevSecOps, or AI.</p>
-    <p><strong>Email:</strong> <a href="mailto:sritej.panchumarthi@protonmail.com">sritej.panchumarthi@protonmail.com</a></p>
-    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/psritej" target="_blank">linkedin.com/in/psritej</a></p>
-    <p><strong>GitHub:</strong> <a href="https://github.com/sritej1" target="_blank">github.com/sritej1</a></p>
-  </main>
+        <div class="field">
+          <div class="label">Email</div>
+          <div><a href="mailto:panchumarthi1457@gmail.com">panchumarthi1457@gmail.com</a></div>
+        </div>
 
-  <footer>
-    <p>&copy; 2025 Sritej Panchumarthi. All rights reserved.</p>
-  </footer>
+        <div class="field">
+          <div class="label">GitHub</div>
+          <div><a href="https://github.com/sritej1" target="_blank" rel="noopener">github.com/sritej1</a></div>
+        </div>
+
+        <div class="field">
+          <div class="label">LinkedIn</div>
+          <div><a href="https://www.linkedin.com/in/psritej" target="_blank" rel="noopener">linkedin.com/in/psritej</a></div>
+        </div>
+
+        <div class="chip-row">
+          <span class="chip">Senior DevOps Engineer</span>
+          <span class="chip">AWS · EKS · GitLab CI</span>
+          <span class="chip">Security Specialty</span>
+        </div>
+      </div>
+      <footer>← <a href="/">Back to Home</a></footer>
+    </div>
+  </div>
 </body>
 </html>
