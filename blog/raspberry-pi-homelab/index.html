@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building a Raspberry Pi 5 Homelab: DNS, NAS, and Observability | Blog – Sritej Panchumarthi</title>
+  <meta name="description" content="Step-by-step guide to turning a Raspberry Pi 5 into a homelab with AdGuard, NextDNS, NAS, and observability dashboards." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    body{margin:0;font-family:Inter,system-ui,sans-serif;background:#020617;color:#e5e7eb;}
+    a{color:#22c55e;text-decoration:none;}a:hover{text-decoration:underline;}
+    header{padding:18px 22px;border-bottom:1px solid rgba(15,23,42,0.9);background:rgba(5,7,20,0.95);backdrop-filter:blur(18px);position:sticky;top:0;z-index:10;}
+    .header-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+    .brand{font-family:"Fira Code",monospace;color:#22c55e;font-size:0.9rem;}
+    main{max-width:900px;margin:0 auto;padding:26px 22px 40px;}
+    h1{font-size:clamp(2rem,3vw,2.4rem);margin-bottom:10px;}
+    .meta{font-size:0.85rem;color:#9ca3af;margin-bottom:20px;}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+    .pill{border-radius:999px;padding:4px 10px;border:1px solid rgba(148,163,184,0.6);background:rgba(15,23,42,0.8);font-size:0.8rem;}
+    article p{margin:0 0 14px 0;line-height:1.7;font-size:0.98rem;}
+    article h2{margin-top:24px;margin-bottom:10px;font-size:1.25rem;}
+    article ul{margin:0 0 14px 20px;}
+    footer{margin-top:32px;font-size:0.8rem;color:#9ca3af;text-align:center;}
+    code{font-family:"Fira Code",monospace;font-size:0.85rem;background:#020617;padding:2px 4px;border-radius:4px;}
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="brand">&lt; psritej.com / blog / raspberry-pi-homelab /&gt;</div>
+    <a href="/blog.html">← Back to blog</a>
+  </div>
+</header>
+
+<main>
+  <h1>Building a Raspberry Pi 5 Homelab: DNS, NAS, and Observability</h1>
+  <div class="meta">
+    Turning a small board into a full lab for networking, storage, and monitoring.
+  </div>
+  <div class="pill-row">
+    <span class="pill">Raspberry Pi 5</span>
+    <span class="pill">AdGuard</span>
+    <span class="pill">NextDNS</span>
+    <span class="pill">NAS</span>
+    <span class="pill">Grafana</span>
+  </div>
+
+  <article>
+    <p>
+      A Raspberry Pi 5 is more than fast enough to act as a small homelab if you design
+      it carefully. In this write-up, I walk through how I wired mine to handle DNS
+      filtering, local NAS storage, and observability for my home network.
+    </p>
+
+    <h2>High-Level Architecture</h2>
+    <p>
+      The Pi connects to the router via Ethernet and runs a small stack of services:
+    </p>
+    <ul>
+      <li><strong>AdGuard Home</strong> in front of <strong>NextDNS</strong> for DNS filtering.</li>
+      <li><strong>Samba</strong> to expose a 2 TB drive as a simple NAS.</li>
+      <li><strong>Node exporter</strong> + <strong>Prometheus</strong> + <strong>Grafana</strong> for metrics.</li>
+    </ul>
+
+    <h2>DNS: AdGuard + NextDNS</h2>
+    <p>
+      AdGuard runs locally and forwards upstream to NextDNS, which lets me keep
+      profile-based blocking while still having a single, fast local IP for all devices.
+      The router’s DNS is set to the Pi’s address, and AdGuard handles the rest.
+    </p>
+
+    <h2>NAS on a Budget</h2>
+    <p>
+      Instead of buying a dedicated NAS, I attached a USB 3 drive and exported it using
+      Samba. It’s not Synology, but for photo backups and lab files it works great.
+    </p>
+
+    <h2>Observability</h2>
+    <p>
+      Exporters on the Pi feed metrics into Prometheus. Grafana dashboards show:
+    </p>
+    <ul>
+      <li>CPU and memory usage on the Pi.</li>
+      <li>Network throughput to and from the router.</li>
+      <li>DNS query volumes and block rates from AdGuard.</li>
+    </ul>
+
+    <p>
+      The result is a tiny, always-on lab that keeps my network faster and safer, and
+      gives me a place to test ideas without touching production AWS accounts.
+    </p>
+  </article>
+
+  <footer>
+    © 2025 Sritej Panchumarthi · <a href="/blog.html">Back to blog</a>
+  </footer>
+</main>
+</body>
+</html>

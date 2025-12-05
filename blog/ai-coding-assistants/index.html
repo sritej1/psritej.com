@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Coding Assistants: Where They Shine, Where They Break | Blog – Sritej Panchumarthi</title>
+  <meta name="description" content="Real-world comparison of ChatGPT, GitHub Copilot, and Amazon CodeWhisperer across infrastructure-as-code, pipelines, and backend services." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    body { margin: 0; font-family: Inter, system-ui, sans-serif; background:#020617; color:#e5e7eb; }
+    a{ color:#38bdf8; text-decoration:none; } a:hover{text-decoration:underline;}
+    header{padding:18px 22px;border-bottom:1px solid rgba(15,23,42,0.9);background:rgba(5,7,20,0.95);backdrop-filter:blur(18px);position:sticky;top:0;z-index:10;}
+    .header-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+    .brand{font-family:"Fira Code",monospace;color:#38bdf8;font-size:0.9rem;}
+    main{max-width:900px;margin:0 auto;padding:26px 22px 40px;}
+    h1{font-size:clamp(2rem,3vw,2.4rem);margin-bottom:10px;}
+    .meta{font-size:0.85rem;color:#9ca3af;margin-bottom:20px;}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+    .pill{border-radius:999px;padding:4px 10px;border:1px solid rgba(148,163,184,0.6);background:rgba(15,23,42,0.8);font-size:0.8rem;}
+    article p{margin:0 0 14px 0;line-height:1.7;font-size:0.98rem;}
+    article h2{margin-top:24px;margin-bottom:10px;font-size:1.25rem;}
+    article ul{margin:0 0 14px 20px;}
+    footer{margin-top:32px;font-size:0.8rem;color:#9ca3af;text-align:center;}
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="brand">&lt; psritej.com / blog / ai-coding-assistants /&gt;</div>
+    <a href="/blog.html">← Back to blog</a>
+  </div>
+</header>
+
+<main>
+  <h1>AI Coding Assistants: Where They Shine, Where They Break</h1>
+  <div class="meta">
+    Experiments with ChatGPT, GitHub Copilot, and Amazon CodeWhisperer using real pipelines and infra.
+  </div>
+  <div class="pill-row">
+    <span class="pill">ChatGPT</span>
+    <span class="pill">GitHub Copilot</span>
+    <span class="pill">CodeWhisperer</span>
+    <span class="pill">Infrastructure-as-Code</span>
+  </div>
+
+  <article>
+    <p>
+      AI coding assistants are incredible at getting you “close enough” quickly. But in
+      production systems, “close enough” is sometimes worse than no code at all.
+      I benchmarked three assistants across five everyday tasks I actually run at work.
+    </p>
+
+    <h2>What I Tested</h2>
+    <ul>
+      <li>Writing a new GitLab CI job with cache, artifacts, and environment rules.</li>
+      <li>Creating a Terraform module for an S3 bucket with secure defaults.</li>
+      <li>Refactoring a Python Lambda function into a more testable layout.</li>
+      <li>Writing Kubernetes manifests for a simple web API.</li>
+      <li>Summarizing log snippets to generate a runbook entry.</li>
+    </ul>
+
+    <h2>Where They Shine</h2>
+    <p>
+      All three assistants were very strong at boilerplate: YAML, Terraform resources,
+      and wiring together standard AWS configurations. ChatGPT and Copilot were the
+      best at explaining why a change was needed, not just suggesting one.
+    </p>
+
+    <h2>Where They Break</h2>
+    <p>
+      Complex IAM policies, subtle concurrency issues, and anything involving real
+      business context were easy to mess up. The tools tend to be overconfident, and
+      it’s easy for teams to copy-paste security bugs as if they came from an oracle.
+    </p>
+
+    <h2>Practical Guardrails</h2>
+    <ul>
+      <li>Always run suggestions through your normal review and security scanners.</li>
+      <li>Push assistants toward <em>generating tests</em>, not just application code.</li>
+      <li>Use them for scaffolding and documentation, not final designs.</li>
+    </ul>
+
+    <p>
+      Used well, these tools feel like having a junior engineer pair-programming with
+      you all day. Used poorly, they can mass-produce risky patterns faster than your
+      reviewers can catch them.
+    </p>
+  </article>
+
+  <footer>
+    © 2025 Sritej Panchumarthi · <a href="/blog.html">Back to blog</a>
+  </footer>
+</main>
+</body>
+</html>

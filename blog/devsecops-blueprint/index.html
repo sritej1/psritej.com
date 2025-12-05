@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Practical DevSecOps Blueprint for Real Teams | Blog – Sritej Panchumarthi</title>
+  <meta name="description" content="End-to-end DevSecOps blueprint using GitLab CI, Snyk, Trivy, and policy-as-code for secure yet fast software delivery." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+    }
+    a { color: #22c55e; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header {
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(15,23,42,0.9);
+      background: rgba(5,7,20,0.95);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand {
+      font-family: "Fira Code", monospace;
+      color: #22c55e;
+      font-size: 0.9rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 26px 22px 40px;
+    }
+    h1 {
+      font-size: clamp(2rem, 3vw, 2.4rem);
+      margin-bottom: 10px;
+    }
+    .meta {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 20px;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .pill {
+      border-radius: 999px;
+      padding: 4px 10px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.8);
+      font-size: 0.8rem;
+    }
+    article p {
+      margin: 0 0 14px 0;
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+    article h2 {
+      margin-top: 24px;
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+    article pre {
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid rgba(30,64,175,0.7);
+      padding: 12px 14px;
+      font-family: "Fira Code", monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      color: #a5f3fc;
+    }
+    footer {
+      margin-top: 32px;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="brand">&lt; psritej.com / blog / devsecops-blueprint /&gt;</div>
+    <a href="/blog.html">← Back to blog</a>
+  </div>
+</header>
+
+<main>
+  <h1>A Practical DevSecOps Blueprint for Real Teams</h1>
+  <div class="meta">
+    Posted by <strong>Sritej Panchumarthi</strong> · DevSecOps · AWS · GitLab CI
+  </div>
+  <div class="pill-row">
+    <span class="pill">GitLab CI</span>
+    <span class="pill">Snyk</span>
+    <span class="pill">Trivy</span>
+    <span class="pill">SBOM</span>
+    <span class="pill">Policy-as-Code</span>
+  </div>
+
+  <article>
+    <p>
+      Most “DevSecOps blueprints” look great in slides and fall apart the moment a real
+      team tries to implement them. In this article, I’m focusing on something you can
+      actually deploy: a GitLab CI pipeline that bakes in security at every stage
+      without turning every merge request into a two-week negotiation.
+    </p>
+
+    <h2>Pipeline Overview</h2>
+    <p>
+      The high-level design is simple: keep the happy path fast, and run heavier
+      security stages in parallel or asynchronously. Everything is driven by
+      configuration – no one should be editing YAML in production to toggle security.
+    </p>
+
+    <pre>
+stages:
+  - lint
+  - test
+  - build
+  - scan
+  - deploy
+
+include:
+  - local: .gitlab/security.yml
+  - local: .gitlab/docker.yml
+  - local: .gitlab/deploy.yml
+    </pre>
+
+    <h2>Security Stages That Don’t Block Progress</h2>
+    <p>
+      The key to adoption is sensible defaults. Critical issues block the pipeline. 
+      Everything else is turned into a comment on the merge request with clear context.
+      Developers get signal, not noise; security gets a trackable history of findings.
+    </p>
+
+    <pre>
+sast:
+  stage: scan
+  allow_failure: false
+  script:
+    - snyk code test --severity-threshold=high
+
+sca:
+  stage: scan
+  allow_failure: true
+  script:
+    - snyk test --severity-threshold=medium
+    </pre>
+
+    <h2>SBOMs and Compliance</h2>
+    <p>
+      Every build publishes an SBOM artifact and pushes a signed image to the registry.
+      This makes it trivial to answer “Where is this vulnerable library running?” when
+      the next CVE drops.
+    </p>
+
+    <h2>Next Steps</h2>
+    <p>
+      In future posts I’ll dive into policy-as-code with tools such as OPA and how to
+      integrate this blueprint into multi-account AWS environments. If you’re
+      interested in a full reference repo, connect with me on
+      <a href="https://www.linkedin.com/in/psritej" target="_blank">LinkedIn</a>.
+    </p>
+  </article>
+
+  <footer>
+    © 2025 Sritej Panchumarthi · <a href="/blog.html">Back to blog</a>
+  </footer>
+</main>
+</body>
+</html>
