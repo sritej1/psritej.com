@@ -1,0 +1,25 @@
+:root{
+  --bg:#0b0f17; --bg-2:#121826; --text:#e6eef8; --muted:#9bb1c9;
+  --accent:#00ffcc; --accent-2:#1e90ff; --card:#0f1523; --border:#1b2a41;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
+a{color:var(--accent);text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+.btn{display:inline-flex;gap:8px;align-items:center;padding:12px 16px;border-radius:12px;background:var(--accent);color:#001410;font-weight:700;border:0}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.nav{display:flex;gap:10px;flex-wrap:wrap}
+.card{background:var(--bg-2);border:1px solid var(--border);border-radius:16px;padding:20px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:#1e293b;border:1px solid #263447;color:#cde0ff;padding:6px 10px;border-radius:999px;font-size:.9rem}
+.hero{min-height:80vh;display:grid;place-items:center;position:relative;overflow:hidden;text-align:center;padding:48px 16px}
+.hero h1{font-size:clamp(28px,6vw,56px);margin:0 0 8px}
+.hero p{max-width:760px;margin:0 auto;color:var(--muted);font-size:clamp(14px,2.2vw,18px)}
+.hero .cta{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+canvas.bg{position:fixed;inset:0;z-index:-1;background:black}
+.footer{opacity:.75;text-align:center;padding:28px}
+@media (prefers-reduced-motion: reduce){
+  .reduce-hide{display:none !important}
+}
