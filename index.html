@@ -2,139 +2,86 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sritej Panchumarthi | Cloud Security & AI</title>
-  <meta name="description" content="Cloud Security and AI Research Portfolio of Sritej Panchumarthi. Explore DevSecOps, intelligent infrastructure, and secure AI pipelines." />
-  <meta name="keywords" content="Sritej, Panchumarthi, Cloud Security, DevSecOps, AI Research, ML Pipelines, Cybersecurity Portfolio" />
-  <meta name="author" content="Sritej Panchumarthi" />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sritej Panchumarthi – Cloud Security & AI</title>
+  <meta name="description" content="DevSecOps engineer building secure, scalable AI and cloud systems. Portfolio, projects, research, and contact." />
+  <meta property="og:title" content="Sritej Panchumarthi – Cloud Security & AI">
+  <meta property="og:description" content="DevSecOps · AWS · Kubernetes · AI Agents · Secure Pipelines">
+  <meta property="og:image" content="https://psritej.com/assets/og-image.jpg">
+  <meta property="og:url" content="https://psritej.com/">
+  <link rel="canonical" href="https://psritej.com/">
+  <link rel="preload" as="style" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Sritej Panchumarthi",
+    "jobTitle":"Senior DevOps Engineer",
+    "url":"https://psritej.com",
+    "sameAs":["https://github.com/sritej1","https://www.linkedin.com/in/psritej"]
+  }
+  </script>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Fira Code', monospace;
-      background: black;
-      color: #00ffcc;
-      overflow-x: hidden;
-    }
-    .matrix {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: black;
-      z-index: -1;
-    }
-    .overlay {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-    }
-    h1 {
-      font-size: 3rem;
-      color: #ffffff;
-      margin-bottom: 1rem;
-    }
-    h2 {
-      font-size: 1.5rem;
-      color: #ccc;
-      margin-bottom: 2rem;
-    }
-    .terminal {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 1.5rem;
-      border-radius: 12px;
-      color: #00ffcc;
-      box-shadow: 0 0 15px #00ffcc55;
-      margin-bottom: 2rem;
-    }
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-    .button {
-      padding: 12px 24px;
-      font-size: 1rem;
-      background: transparent;
-      color: #00ffcc;
-      border: 2px solid #00ffcc;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.3s ease;
-    }
-    .button:hover {
-      background: #00ffcc;
-      color: black;
-    }
+    /* tiny page-specific accent tweaks */
+    .hero .cta .btn{box-shadow:0 0 0 0 rgba(0,255,204,0.4);transition:transform .2s, box-shadow .6s}
+    .hero .cta .btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px -8px rgba(0,255,204,0.3)}
   </style>
 </head>
 <body>
-  <canvas class="matrix"></canvas>
-  <div class="overlay">
-    <h1>Innovating Cloud and AI Security</h1>
-    <h2>DevSecOps practitioner blending secure cloud automation with real-time AI innovation</h2>
-    <div class="terminal">
-      <p>~/psritej$ <span style="color: #0f0;">ai --deploy --secure</span></p>
-      <ul style="list-style: none; color: #0f0;">
-        <li>✅ ML pipelines encrypted</li>
-        <li>✅ Cloud security policies applied</li>
-        <li>🚀 Launching intelligent infrastructure...</li>
-      </ul>
-    </div>
-    <div class="buttons">
-      <a href="/about-me.html" class="button">About Me</a>
-      <a href="/research.html" class="button">Research</a>
-      <a href="/projects.html" class="button">Projects</a>
-      <a href="/resume.html" class="button">Resume</a>
-      <a href="/contact.html" class="button">Contact</a>
+  <canvas class="bg reduce-hide" aria-hidden="true"></canvas>
+
+  <div class="container">
+    <div class="header">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="/assets/logo.svg" alt="SP logo" width="28" height="28" loading="lazy">
+        <strong>Sritej Panchumarthi</strong>
+      </div>
+      <nav class="nav">
+        <a href="/about-me.html">About</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/research.html">Research</a>
+        <a href="/resume.html">Resume</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
     </div>
   </div>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Transforming Cloud & AI Security</h1>
+      <p>Secure-by-default CI/CD, Kubernetes, and serverless on AWS. Research in DevSecMLOps and AI agents—delivered with high performance and resilience.</p>
+      <div class="cta">
+        <a class="btn" href="/projects.html">Explore Projects</a>
+        <a class="btn ghost" href="/research.html">Read Research</a>
+      </div>
+      <div class="chips" style="margin-top:20px;justify-content:center">
+        <span class="chip">AWS</span><span class="chip">EKS</span><span class="chip">GitLab CI</span>
+        <span class="chip">Terraform</span><span class="chip">Trivy</span><span class="chip">Snyk</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container reveal card" style="margin:20px auto">
+    <h2 style="margin:0 0 10px">Featured</h2>
+    <p class="muted" style="color:var(--muted)">Raspberry Pi 5 gateway (AdGuard + NextDNS), secure GitLab CI templates, and EKS blue-green deployments with rollback.</p>
+    <div class="cta" style="margin-top:16px">
+      <a class="btn ghost" href="/projects.html#gateway">Pi5 Gateway</a>
+      <a class="btn ghost" href="/projects.html#ci">Secure CI</a>
+      <a class="btn ghost" href="/projects.html#eks">EKS Zero-downtime</a>
+    </div>
+  </div>
+
+  <footer class="footer">© 2025 Sritej Panchumarthi · <a href="/sitemap.xml">Sitemap</a></footer>
+
+  <script type="module" defer src="/js/app.js"></script>
+  <script type="module" defer src="/js/fx-matrix.js"></script>
   <script>
-    const canvas = document.querySelector(".matrix");
-    const ctx = canvas.getContext("2d");
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const binary = "01";
-    const fontSize = 16;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
-
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#00ffcc";
-      ctx.font = fontSize + "px Fira Code";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = binary[Math.floor(Math.random() * binary.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
-
-    setInterval(draw, 33);
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    // attach matrix after module loads
+    import('/js/fx-matrix.js').then(mod => {
+      const bg = document.querySelector('canvas.bg');
+      if(bg) mod.startMatrix(bg);
     });
   </script>
 </body>
