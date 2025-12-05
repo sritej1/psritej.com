@@ -5,36 +5,336 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog – Sritej Panchumarthi</title>
   <meta name="description" content="Blog by Sritej Panchumarthi on DevSecOps, AWS, Kubernetes, AI agents, and secure automation." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#05070d;--panel:#020617;--border:#1f2937;--text:#e5e7eb;--muted:#9ca3af;--accent:#00ffcc;}
+    :root{
+      --bg:#05070d;
+      --panel:#020617;
+      --panel2:#0b1120;
+      --border:#1f2937;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#00ffcc;
+      --accent2:#38bdf8;
+    }
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
-    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-    .card{max-width:700px;width:100%;background:var(--panel);border-radius:18px;border:1px solid var(--border);padding:24px 22px;box-shadow:0 24px 60px rgba(15,23,42,0.9)}
-    h1{font-size:1.8rem;margin-bottom:8px}
-    p{color:var(--muted);font-size:0.95rem;margin-bottom:10px}
-    .tagline{margin-bottom:16px}
+    html,body{
+      min-height:100%;
+      background:radial-gradient(circle at top,#020617 0,#020617 30%,#020617 60%,#000 100%);
+      color:var(--text);
+      font-family:Inter,system-ui,sans-serif;
+    }
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
-    footer{text-align:center;font-size:0.8rem;color:var(--muted);margin-top:18px}
+
+    header{
+      padding:18px 20px 10px;
+      border-bottom:1px solid rgba(15,23,42,0.9);
+      background:rgba(5,7,13,0.95);
+      backdrop-filter:blur(18px);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    .header-inner{
+      max-width:1100px;
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .logo{
+      width:28px;height:28px;
+      border-radius:8px;
+      background:radial-gradient(circle at 20% 0%,var(--accent),transparent 60%);
+      display:flex;align-items:center;justify-content:center;
+      font-family:"Fira Code",monospace;font-size:14px;
+      color:#020617;border:1px solid rgba(148,163,184,0.7);
+      box-shadow:0 0 24px rgba(34,211,238,0.35);
+    }
+    .brand-text small{display:block;font-size:0.7rem;color:var(--muted)}
+
+    .nav-links{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      font-size:0.85rem;
+    }
+    .nav-links a{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      color:var(--muted);
+      text-decoration:none;
+    }
+    .nav-links a:hover{
+      border-color:rgba(56,189,248,0.5);
+      color:var(--accent);
+      background:rgba(15,23,42,0.9);
+    }
+
+    main{
+      max-width:1100px;
+      margin:0 auto;
+      padding:24px 20px 40px;
+    }
+    .page-title{
+      font-size:1.8rem;
+      margin-bottom:4px;
+    }
+    .page-sub{
+      color:var(--muted);
+      font-size:0.95rem;
+      margin-bottom:20px;
+    }
+
+    /* Grid of cards */
+    .cards-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+      margin-top:16px;
+    }
+
+    .flip-card-link{
+      text-decoration:none;
+      color:inherit;
+      display:block;
+    }
+
+    .flip-card{
+      perspective:1200px;
+    }
+    .flip-inner{
+      position:relative;
+      width:100%;
+      height:200px;
+      transform-style:preserve-3d;
+      transition:transform 0.6s;
+    }
+    .flip-card:hover .flip-inner{
+      transform:rotateY(180deg);
+    }
+
+    .flip-face{
+      position:absolute;
+      inset:0;
+      border-radius:16px;
+      border:1px solid var(--border);
+      padding:16px 16px 14px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      background:
+        radial-gradient(circle at 0 0,rgba(56,189,248,0.25),transparent 55%),
+        var(--panel2);
+      backface-visibility:hidden;
+      overflow:hidden;
+    }
+    .flip-face.back{
+      transform:rotateY(180deg);
+      background:
+        radial-gradient(circle at 100% 0,rgba(34,197,94,0.15),transparent 55%),
+        #020617;
+    }
+
+    .card-tag{
+      font-size:0.75rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--accent2);
+      margin-bottom:6px;
+    }
+    .card-title{
+      font-size:1.02rem;
+      font-weight:600;
+      margin-bottom:4px;
+    }
+    .card-meta{
+      font-size:0.8rem;
+      color:var(--muted);
+      margin-bottom:4px;
+    }
+    .card-footer{
+      font-size:0.8rem;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:6px;
+    }
+    .card-footer span.dot{
+      width:6px;height:6px;border-radius:50%;background:#22c55e;
+      box-shadow:0 0 8px rgba(34,197,94,0.9);
+      display:inline-block;
+      margin-right:4px;
+    }
+
+    .card-preview{
+      font-size:0.9rem;
+      color:#e5e7eb;
+    }
+    .card-preview strong{
+      color:var(--accent);
+      font-weight:600;
+    }
+    .read-more{
+      margin-top:10px;
+      font-size:0.85rem;
+      color:var(--accent);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    footer{
+      text-align:center;
+      font-size:0.8rem;
+      color:var(--muted);
+      padding:18px 10px 24px;
+      border-top:1px solid rgba(15,23,42,0.9);
+      margin-top:24px;
+    }
+
+    @media (max-width:640px){
+      .flip-inner{height:220px;}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .flip-inner{transform:none !important}
+      .flip-card:hover .flip-inner{transform:none !important}
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div>
-      <div class="card">
-        <h1>Blog – Coming Soon</h1>
-        <p class="tagline">
-          I’ll be sharing deep-dive posts on AWS patterns, DevSecOps pipelines, EKS operations, AI agents, and security automation.
-        </p>
-        <p>
-          If you’d like to suggest a topic or request a breakdown of a specific architecture, you can
-          <a href="/contact.html">contact me here</a>.
-        </p>
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="logo">SP</div>
+        <div class="brand-text">
+          <strong>Sritej Panchumarthi</strong>
+          <small>Cloud Security · DevSecOps · AI Research</small>
+        </div>
       </div>
-      <footer>← <a href="/">Back to Home</a></footer>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/#projects">Projects</a>
+        <a href="/#research">Research</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
     </div>
-  </div>
+  </header>
+
+  <main>
+    <h1 class="page-title">Blog</h1>
+    <p class="page-sub">
+      Short, practical articles on AWS, DevSecOps, EKS, AI agents, and real production issues.
+      Hover a card to preview; click to open the full article.
+    </p>
+
+    <section class="cards-grid">
+      <!-- ARTICLE 1 -->
+      <a class="flip-card-link" href="/blog/secure-eks-bluegreen.html">
+        <div class="flip-card">
+          <div class="flip-inner">
+            <!-- Front -->
+            <div class="flip-face front">
+              <div>
+                <div class="card-tag">DevSecOps · EKS</div>
+                <div class="card-title">Designing Secure Blue/Green Deployments on EKS</div>
+                <div class="card-meta">Approx. 7 min read · AWS · GitLab CI</div>
+              </div>
+              <div class="card-footer">
+                <span><span class="dot"></span>Production-tested pattern</span>
+                <span>Hover to preview ↻</span>
+              </div>
+            </div>
+            <!-- Back -->
+            <div class="flip-face back">
+              <div class="card-preview">
+                <strong>Preview:</strong> How I wired traffic shifting, health checks, and automatic rollback
+                into EKS deployments using GitLab CI, Ingress routing, and metrics-driven promotion.
+              </div>
+              <div class="read-more">
+                <span>Click to read full article</span>
+                <span>→</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- ARTICLE 2 -->
+      <a class="flip-card-link" href="/blog/ci-security-gates.html">
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-face front">
+              <div>
+                <div class="card-tag">Pipelines · Security</div>
+                <div class="card-title">Turning GitLab CI into a Security Gatekeeper</div>
+                <div class="card-meta">Approx. 6 min read · Snyk · OWASP</div>
+              </div>
+              <div class="card-footer">
+                <span><span class="dot"></span>Shift-left security</span>
+                <span>Hover to preview ↻</span>
+              </div>
+            </div>
+            <div class="flip-face back">
+              <div class="card-preview">
+                <strong>Preview:</strong> Practical YAML snippets to plug Snyk, container scanning,
+                SBOM export, and OWASP checks into your pipeline without slowing engineers down.
+              </div>
+              <div class="read-more">
+                <span>Click to read full article</span>
+                <span>→</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- ARTICLE 3 -->
+      <a class="flip-card-link" href="/blog/home-lab-dns-firewall.html">
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-face front">
+              <div>
+                <div class="card-tag">Home Lab · Networking</div>
+                <div class="card-title">Building a DNS Firewall with Raspberry Pi 5</div>
+                <div class="card-meta">Approx. 5 min read · AdGuard · NextDNS</div>
+              </div>
+              <div class="card-footer">
+                <span><span class="dot"></span>Real Pi5 setup</span>
+                <span>Hover to preview ↻</span>
+              </div>
+            </div>
+            <div class="flip-face back">
+              <div class="card-preview">
+                <strong>Preview:</strong> Step-by-step configuration of Pi 5 as a DNS firewall for the
+                entire home network, including AdGuard, NextDNS, and monitoring tips.
+              </div>
+              <div class="read-more">
+                <span>Click to read full article</span>
+                <span>→</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- You can copy/paste and add more cards below this line -->
+
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Sritej Panchumarthi · <a href="/">Back to Home</a>
+  </footer>
 </body>
 </html>
