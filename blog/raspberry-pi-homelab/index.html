@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Building a Raspberry Pi 5 Homelab: DNS, NAS, and Observability | Blog – Sritej Panchumarthi</title>
   <meta name="description" content="Step-by-step guide to turning a Raspberry Pi 5 into a homelab with AdGuard, NextDNS, NAS, and observability dashboards." />
+  <meta property="og:title" content="Building a Raspberry Pi 5 Homelab: DNS, NAS, and Observability" />
+  <meta property="og:description" content="Step-by-step guide to turning a Raspberry Pi 5 into a homelab with AdGuard, NextDNS, NAS, and observability dashboards." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://psritej.com/blog/raspberry-pi-homelab/" />
+  <meta property="og:image" content="/assets/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Building a Raspberry Pi 5 Homelab: DNS, NAS, and Observability" />
+  <meta name="twitter:description" content="Step-by-step guide to turning a Raspberry Pi 5 into a homelab with AdGuard, NextDNS, NAS, and observability dashboards." />
+  <meta name="twitter:image" content="/assets/og-image.svg" />
+  <link rel="canonical" href="https://psritej.com/blog/raspberry-pi-homelab/" />
+  <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/style.css" />
   <style>
@@ -90,6 +101,64 @@
       The result is a tiny, always-on lab that keeps my network faster and safer, and
       gives me a place to test ideas without touching production AWS accounts.
     </p>
+
+    <h2>Level 3: Component Layout of the Pi Lab</h2>
+    <figure class="diagram-card">
+      <figcaption>Network and service components on the Pi</figcaption>
+      <pre class="diagram" aria-label="Component diagram for Raspberry Pi homelab">
+ISP Router ── Ethernet ── Raspberry Pi 5
+                   │
+                   ├─ AdGuard Home (DNS resolver)
+                   │      ↳ NextDNS upstream
+                   │
+                   ├─ Samba (USB3 SSD as NAS)
+                   │      ↳ VLAN file shares
+                   │
+                   ├─ Node Exporter / Prometheus Agent
+                   │      ↳ Remote Prometheus
+                   │
+                   └─ Grafana (dashboards + alerts)
+      </pre>
+    </figure>
+
+    <h2>Level 5: Ready-to-Build Compose Stack</h2>
+    <p>Drop this <code>docker-compose.yml</code> onto the Pi and start the full stack.</p>
+    <pre class="diagram" aria-label="docker compose stack for raspberry pi homelab">
+version: "3.9"
+services:
+  adguard:
+    image: adguard/adguardhome:latest
+    network_mode: host
+    volumes:
+      - ./data/adguard/work:/opt/adguardhome/work
+      - ./data/adguard/conf:/opt/adguardhome/conf
+  samba:
+    image: dperson/samba:latest
+    network_mode: host
+    environment:
+      - USER=labuser;labpass
+      - SHARE=data;/data
+    volumes:
+      - /mnt/ssd:/data
+  node-exporter:
+    image: prom/node-exporter:latest
+    network_mode: host
+  grafana:
+    image: grafana/grafana:latest
+    ports: ["3000:3000"]
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+      - ./provisioning:/etc/grafana/provisioning
+    depends_on: [node-exporter]
+    </pre>
+
+    <h2>Ready-to-Build Steps</h2>
+    <ul>
+      <li>Flash Raspberry Pi OS Lite, enable SSH, and fix the Pi to a static LAN IP.</li>
+      <li>Attach a USB3 SSD, mount at <code>/mnt/ssd</code>, and add an fstab entry.</li>
+      <li>Install Docker, drop the compose file above, and run <code>docker compose up -d</code>.</li>
+      <li>Point the router DNS to the Pi IP; import Grafana dashboards for AdGuard and node exporter.</li>
+    </ul>
   </article>
 
   <footer>

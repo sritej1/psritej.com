@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>A Practical DevSecOps Blueprint for Real Teams | Blog – Sritej Panchumarthi</title>
   <meta name="description" content="End-to-end DevSecOps blueprint using GitLab CI, Snyk, Trivy, and policy-as-code for secure yet fast software delivery." />
+  <meta property="og:title" content="A Practical DevSecOps Blueprint for Real Teams" />
+  <meta property="og:description" content="End-to-end DevSecOps blueprint using GitLab CI, Snyk, Trivy, and policy-as-code for secure yet fast software delivery." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://psritej.com/blog/devsecops-blueprint/" />
+  <meta property="og:image" content="/assets/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="A Practical DevSecOps Blueprint for Real Teams" />
+  <meta name="twitter:description" content="End-to-end DevSecOps blueprint using GitLab CI, Snyk, Trivy, and policy-as-code for secure yet fast software delivery." />
+  <meta name="twitter:image" content="/assets/og-image.svg" />
+  <link rel="canonical" href="https://psritej.com/blog/devsecops-blueprint/" />
+  <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/style.css" />
   <style>
@@ -170,6 +181,75 @@ sca:
       This makes it trivial to answer “Where is this vulnerable library running?” when
       the next CVE drops.
     </p>
+
+    <h2>Level 3: DevSecOps Component View</h2>
+    <figure class="diagram-card">
+      <figcaption>How code, policy, and runtime connect</figcaption>
+      <pre class="diagram" aria-label="Component diagram for DevSecOps pipeline">
+Developers → GitLab → Merge Request
+    │            │
+    │            ├─ Semgrep/Snyk (SAST/SCA)
+    │            └─ Container Build + SBOM (Syft)
+    │
+    ▼
+Registry (signed images + attestations)
+    │
+    ▼
+OPA/Gatekeeper Policies → Kubernetes Admission
+    │                                │
+    └───────────────Observability (Prometheus/Grafana)───────────────┘
+    </pre>
+    </figure>
+
+    <h2>Level 5: Ready-to-Build Pipeline and Policy</h2>
+    <p>Drop these files into the repo to enforce security without slowing developers.</p>
+    <pre class="diagram" aria-label="GitLab CI stages for DevSecOps">
+# .gitlab-ci.yml
+stages: [lint, test, scan, build, deploy]
+scan:
+  stage: scan
+  image: node:20
+  script:
+    - npm ci
+    - npx semgrep --config p/owasp-top-ten
+    - npx snyk test --severity-threshold=high
+build:
+  stage: build
+  image: docker:26
+  services: [docker:26-dind]
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
+    - syft $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA -o spdx-json > sbom.json
+    - cosign sign --yes $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+deploy:
+  stage: deploy
+  script:
+    - kubectl apply -f k8s/
+    - kubectl rollout status deploy/app
+    </pre>
+    <pre class="diagram" aria-label="Gatekeeper policy to enforce signed images">
+# policy.yaml
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sPSPTrustedImages
+metadata:
+  name: require-signed-images
+spec:
+  parameters:
+    allowedRegistries: ["registry.gitlab.com/your-group"]
+    requireSignedImages: true
+    verifyAttestation:
+      attestors:
+        - name: cosign
+          keys: ["k8s://cosign-public-key"]
+    </pre>
+
+    <h2>Ready-to-Build Steps</h2>
+    <ul>
+      <li>Create a <code>.gitlab</code> folder with shared templates for scan/build/deploy to enforce consistency.</li>
+      <li>Enable branch protection and require the scan job above to pass before merge.</li>
+      <li>Install Gatekeeper on the cluster and apply the signed-image constraint.</li>
+      <li>Publish SBOMs to artifact storage and wire an alert when a new CVE maps to a running digest.</li>
+    </ul>
 
     <h2>Next Steps</h2>
     <p>
