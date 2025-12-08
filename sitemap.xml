@@ -116,6 +116,12 @@
 
   <!-- Blog Articles (expand as you create new directories/articles) -->
   <url>
+    <loc>https://psritej.com/blog/aws-event-lake-snowflake/index.html</loc>
+    <priority>0.86</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
     <loc>https://psritej.com/blog/devops-cloud-architecture/index.html</loc>
     <priority>0.85</priority>
     <changefreq>weekly</changefreq>

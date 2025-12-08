@@ -122,6 +122,81 @@
     <p>
       This setup routinely ingests 300k+ events/sec with p95 end-to-warehouse latency under three minutes, keeps edge error rates under 0.2% during bot floods, and preserves Snowflake micro-partition efficiency so BI stays sub-second. It solves the “impossible” multi-tenant telemetry problem in days instead of quarters.
     </p>
+
+    <h2>Level 3: Component Architecture for the Event Lake</h2>
+    <figure class="diagram-card">
+      <figcaption>Edge-to-warehouse component flow</figcaption>
+      <pre class="diagram" aria-label="Component diagram from Route 53 to Snowflake">
+Clients (web/mobile/partners)
+  │  HTTPS + signed cookies
+  ▼
+Route 53 (health checks + failover)
+  │
+  ▼
+WAF → CloudFront → Lambda@Edge (normalize headers)
+  │
+  ▼
+API Gateway (JWT auth + quotas) → Lambda (validation/enrichment)
+  │                           ↘︎ Redis (schema + rate cache)
+  ▼
+Kinesis Firehose (dynamic partitioning)
+  │
+  ▼
+S3 Raw  →  S3 Curated (Parquet, tenant/hour)
+  │             │
+  ▼             ▼
+Snowflake External Table → Stream → Task → Fact Table
+      </pre>
+    </figure>
+
+    <h2>Level 5: Production-Ready IaC + Lambda Ingest</h2>
+    <p>The Terraform + Python fragment below is a drop-in starting point for the ingest path.</p>
+    <pre class="diagram" aria-label="Terraform and Lambda snippet for event lake">
+# terraform: firehose delivery to S3 + parquet conversion
+resource "aws_kinesis_firehose_delivery_stream" "events" {
+  name        = "event-bus"
+  destination = "extended_s3"
+  extended_s3_configuration {
+    role_arn           = aws_iam_role.firehose_role.arn
+    bucket_arn         = aws_s3_bucket.curated.arn
+    buffering_size     = 5
+    buffering_interval = 60
+    data_format_conversion_configuration {
+      enabled = true
+      input_format_configuration { deserializer { hive_json_ser_de {} } }
+      output_format_configuration { serializer { parquet_ser_de {} } }
+    }
+    prefix  = "tenant=!{partitionKeyFromQuery:tenant}/dt=!{timestamp:yyyy/MM/dd/HH}/"
+    error_output_prefix = "quarantine/!{firehose:error-output-type}/"
+  }
+}
+
+# lambda: validate and forward to firehose
+import boto3, json, os
+firehose = boto3.client("firehose")
+def handler(event, context):
+    records = []
+    for req in event["records"]:
+        body = json.loads(req["body"])
+        assert 0 < len(body.get("tenant")) < 64
+        body["ingest_ts"] = context.aws_request_id
+        records.append({
+            "Data": json.dumps(body) + "\n",
+            "DeliveryStreamName": os.environ["STREAM_NAME"],
+            "PartitionKey": f"{body['tenant']}#{body.get('schema','v1')}"
+        })
+    for r in records:
+        firehose.put_record(**r)
+    return {"statusCode": 202, "body": "accepted"}
+    </pre>
+
+    <h2>Ready-to-Build Playbook</h2>
+    <ul>
+      <li>Deploy two stacks (primary/standby) behind Route 53; keep Firehose and S3 region-local to minimize cross-AZ traffic.</li>
+      <li>Enable WAF rate rules plus bot control; fail close with Lambda@Edge header canonicalization.</li>
+      <li>Run Snowflake tasks every 5 minutes to MERGE into fact tables keyed by tenant and event type.</li>
+      <li>Instrument CloudWatch metrics (<code>DeliveryToS3.DataFreshness</code>, Lambda p99, Redis latency) and export to Snowflake for unified ops views.</li>
+    </ul>
   </article>
 
   <footer>

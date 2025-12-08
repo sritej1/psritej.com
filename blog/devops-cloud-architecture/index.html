@@ -267,10 +267,77 @@ User → CloudFront/WAF → API Gateway/ALB → Compute (Lambda/ECS/EKS)
 <hr />
 
 <section>
-<h2>7. Conclusion</h2>
+<h2>7. Level 3: Buildable Platform Component Map</h2>
+
+<figure class="diagram-card">
+    <figcaption>Component view wired for delivery and operations</figcaption>
+    <pre class="diagram" aria-label="Level 3 component diagram for AWS platform">
+Developers → GitHub/GitLab → CI (lint/test/scan)
+    │                          │
+    ▼                          ▼
+Artifact Registry (ECR/S3)  Policy Engine (OPA/Rego)
+    │                          │
+    └────────────┬─────────────┘
+                 ▼
+Pipeline Orchestrator (CodePipeline/Argo)
+                 │
+      ┌──────────┴───────────┐
+      │                      │
+   IaC Deploy           App Deploy
+ (Terraform/CDK)       (ECS/EKS/Lambda)
+      │                      │
+      ▼                      ▼
+Networking (VPC/SG)   Data (Aurora/Dynamo/S3)
+      │                      │
+      └──────┬───────────────┘
+             ▼
+Observability (CloudWatch/X-Ray/Sentry)
+    </pre>
+</figure>
+
+<h2>8. Level 5: Ready-to-Build IaC Skeleton</h2>
+<p>Use a single repo with two stacks: <code>platform</code> (shared) and <code>services</code> (per team). Terraform entrypoint:</p>
+<pre class="diagram" aria-label="Terraform starter for layered platform">
+module "network" {
+  source = "./modules/network"
+  cidr_block = "10.10.0.0/16"
+}
+
+module "eks" {
+  source          = "./modules/eks"
+  cluster_version = "1.29"
+  vpc_id          = module.network.vpc_id
+  subnet_ids      = module.network.private_subnet_ids
+}
+
+module "services" {
+  source      = "./modules/services"
+  cluster_arn = module.eks.cluster_arn
+  database = {
+    engine = "aurora-postgresql"
+    size   = "db.r6g.large"
+  }
+}
+
+output "service_endpoint" { value = module.services.url }
+</pre>
+
+<p>Pipeline snippet that builds, scans, and deploys the modules above:</p>
+<pre class="diagram" aria-label="CI/CD snippet for AWS platform">
+stages: [lint, test, scan, deploy]
+deploy:
+  stage: deploy
+  script:
+    - terraform init -backend-config=env/${ENV}.tfbackend
+    - terraform apply -auto-approve
+  environment: ${ENV}
+  only: [main]
+</pre>
+
+<h2>9. Conclusion</h2>
 
 <p>
-AWS is powerful but inherently complex.  
+AWS is powerful but inherently complex.
 The solution is not “more AWS services” — it is <strong>better structure</strong>.
 </p>
 

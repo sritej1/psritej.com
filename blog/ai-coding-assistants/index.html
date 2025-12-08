@@ -97,6 +97,69 @@
       you all day. Used poorly, they can mass-produce risky patterns faster than your
       reviewers can catch them.
     </p>
+
+    <h2>Level 3: End-to-End Pairing Flow</h2>
+    <figure class="diagram-card">
+      <figcaption>Component view of how assistants plug into delivery</figcaption>
+      <pre class="diagram" aria-label="Component diagram for AI coding assistants">
+Developer IDE
+  │  prompts + context
+  ▼
+AI Assistant SDKs (ChatGPT | Copilot | CodeWhisperer)
+  │  suggestions + tests
+  ▼
+Pre-commit Hooks (ruff/flake8 | eslint | tfsec)
+  │  fail early on policy violations
+  ▼
+CI Pipeline (lint → unit → security → preview)
+  │  signed artifacts + SBOM
+  ▼
+Staging Env (feature flags + observability)
+  │  canary + error budget guardrails
+  ▼
+Production (autoscale + SLO dashboards)
+      </pre>
+    </figure>
+
+    <h2>Level 5: Ready-to-Build Guardrail Implementation</h2>
+    <p>
+      Wire the assistants into your delivery flow with code, not promises. The below
+      GitHub Actions snippet turns AI-generated code into a governed path: policy-as-
+      code, unit tests, SBOM, and ephemeral preview gates.
+    </p>
+    <pre class="diagram" aria-label="CI pipeline enforcing guardrails">
+name: ai-assisted-delivery
+on: [pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci
+      - name: Lint & Type Check
+        run: npm run lint && npm run typecheck
+      - name: IaC Scan
+        run: npx tfsec ./infra
+      - name: Security Scan
+        run: npx snyk test --severity-threshold=high
+      - name: Unit Tests
+        run: npm test -- --runInBand
+      - name: Build SBOM
+        run: npx syft dir:. -o json > sbom.json
+      - name: Preview Deploy
+        if: success()
+        run: npx vercel deploy --prebuilt --yes
+    </pre>
+
+    <h2>Ready-to-Build Checklist</h2>
+    <ul>
+      <li>Create repo templates with <code>pre-commit</code> hooks for linting, IaC scanning, and unit tests.</li>
+      <li>Standardize CI like the snippet above so AI output always hits the same gates.</li>
+      <li>Expose SLO dashboards per service (latency, error budget) so risky AI changes surface immediately.</li>
+      <li>Rotate assistants per task: Copilot for scaffolding, ChatGPT for refactors, CodeWhisperer for AWS idioms.</li>
+    </ul>
   </article>
 
   <footer>

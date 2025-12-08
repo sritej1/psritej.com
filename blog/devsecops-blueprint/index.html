@@ -182,6 +182,75 @@ sca:
       the next CVE drops.
     </p>
 
+    <h2>Level 3: DevSecOps Component View</h2>
+    <figure class="diagram-card">
+      <figcaption>How code, policy, and runtime connect</figcaption>
+      <pre class="diagram" aria-label="Component diagram for DevSecOps pipeline">
+Developers → GitLab → Merge Request
+    │            │
+    │            ├─ Semgrep/Snyk (SAST/SCA)
+    │            └─ Container Build + SBOM (Syft)
+    │
+    ▼
+Registry (signed images + attestations)
+    │
+    ▼
+OPA/Gatekeeper Policies → Kubernetes Admission
+    │                                │
+    └───────────────Observability (Prometheus/Grafana)───────────────┘
+    </pre>
+    </figure>
+
+    <h2>Level 5: Ready-to-Build Pipeline and Policy</h2>
+    <p>Drop these files into the repo to enforce security without slowing developers.</p>
+    <pre class="diagram" aria-label="GitLab CI stages for DevSecOps">
+# .gitlab-ci.yml
+stages: [lint, test, scan, build, deploy]
+scan:
+  stage: scan
+  image: node:20
+  script:
+    - npm ci
+    - npx semgrep --config p/owasp-top-ten
+    - npx snyk test --severity-threshold=high
+build:
+  stage: build
+  image: docker:26
+  services: [docker:26-dind]
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
+    - syft $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA -o spdx-json > sbom.json
+    - cosign sign --yes $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+deploy:
+  stage: deploy
+  script:
+    - kubectl apply -f k8s/
+    - kubectl rollout status deploy/app
+    </pre>
+    <pre class="diagram" aria-label="Gatekeeper policy to enforce signed images">
+# policy.yaml
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sPSPTrustedImages
+metadata:
+  name: require-signed-images
+spec:
+  parameters:
+    allowedRegistries: ["registry.gitlab.com/your-group"]
+    requireSignedImages: true
+    verifyAttestation:
+      attestors:
+        - name: cosign
+          keys: ["k8s://cosign-public-key"]
+    </pre>
+
+    <h2>Ready-to-Build Steps</h2>
+    <ul>
+      <li>Create a <code>.gitlab</code> folder with shared templates for scan/build/deploy to enforce consistency.</li>
+      <li>Enable branch protection and require the scan job above to pass before merge.</li>
+      <li>Install Gatekeeper on the cluster and apply the signed-image constraint.</li>
+      <li>Publish SBOMs to artifact storage and wire an alert when a new CVE maps to a running digest.</li>
+    </ul>
+
     <h2>Next Steps</h2>
     <p>
       In future posts I’ll dive into policy-as-code with tools such as OPA and how to
