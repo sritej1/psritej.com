@@ -1,44 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Home (single-page main content) -->
+  <!-- Home -->
   <url>
     <loc>https://psritej.com/</loc>
-    <lastmod>2025-07-25</lastmod>
+    <priority>1.00</priority>
     <changefreq>daily</changefreq>
-    <priority>1.0</priority>
   </url>
 
-  <!-- Contact -->
+  <!-- Primary Pages -->
+  <url>
+    <loc>https://psritej.com/about-me.html</loc>
+    <priority>0.95</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://psritej.com/research.html</loc>
+    <priority>0.95</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://psritej.com/projects.html</loc>
+    <priority>0.90</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
   <url>
     <loc>https://psritej.com/contact.html</loc>
-    <lastmod>2025-07-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.80</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
-  <!-- Blog -->
   <url>
-    <loc>https://psritej.com/blog.html</loc>
-    <lastmod>2025-07-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://psritej.com/resume.html</loc>
+    <priority>0.90</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
-  <!-- Network Block Page -->
+  <url>
+    <loc>https://psritej.com/work.html</loc>
+    <priority>0.75</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
   <url>
     <loc>https://psritej.com/networkblock.html</loc>
-    <lastmod>2025-07-25</lastmod>
+    <priority>0.60</priority>
     <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
   </url>
 
-  <!-- BibTeX file -->
+  <!-- Legal Pages -->
   <url>
-    <loc>https://psritej.com/sritej.bib</loc>
-    <lastmod>2025-07-25</lastmod>
+    <loc>https://psritej.com/privacy-policy.html</loc>
+    <priority>0.60</priority>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
+
+  <url>
+    <loc>https://psritej.com/terms-of-ai-use.html</loc>
+    <priority>0.60</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://psritej.com/legal.html</loc>
+    <priority>0.60</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://psritej.com/dmca.html</loc>
+    <priority>0.50</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://psritej.com/copyright.txt</loc>
+    <priority>0.40</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://psritej.com/ai.txt</loc>
+    <priority>0.40</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://psritej.com/llms.txt</loc>
+    <priority>0.40</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://psritej.com/ai-disclosure.json</loc>
+    <priority>0.40</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <!-- Blog Home -->
+  <url>
+    <loc>https://psritej.com/blog.html</loc>
+    <priority>0.90</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Blog Directory (auto-include folder-level pages) -->
+  <url>
+    <loc>https://psritej.com/blog/</loc>
+    <priority>0.85</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Blog Articles (expand as you create new directories/articles) -->
+  <!-- Example Entry: -->
+  <!--
+  <url>
+    <loc>https://psritej.com/blog/article-1/index.html</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  -->
 
 </urlset>
