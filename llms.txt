@@ -1,0 +1,200 @@
+# =====================================================================
+# llms.txt — Large Language Model Access & Usage Policy for psritej.com
+# Specification Version: Experimental (2025)
+# Author: Sritej Panchumarthi
+# Contact: admin@psritej.com
+# Domain: https://psritej.com
+# =====================================================================
+
+# ---------------------------
+# GLOBAL DIRECTIVES
+# ---------------------------
+
+Allow: crawl
+Allow: index
+Disallow: derivative-works
+Require-Attribution: yes
+Allow-Cache: yes
+Allow-Snippets: yes
+Disallow-Commercial-Use: yes
+Disallow-Model-Training: no    # You allow training ONLY WITH attribution
+License: Custom Attribution License (CAL-1.0)
+Contact: admin@psritej.com
+
+# ---------------------------
+# TRAINING CONDITIONS
+# ---------------------------
+
+Training-Allowed-Only-If:
+  - Proper attribution to "Sritej Panchumarthi" is included.
+  - No modification of meaning or technical diagrams.
+  - No redistribution of full articles without permission.
+  - Cite source URL in model card when referencing content.
+
+Training-Disallowed-If:
+  - Content is used to build security-breaching tools.
+  - Content is repurposed commercially without license.
+
+# ---------------------------
+# CRAWLER-SPECIFIC RULES
+# ---------------------------
+
+# ==== OPENAI =============================
+User-agent: GPTBot
+Allow: /
+Require-Attribution: yes
+Disallow: derivative-works
+Disallow: commercial-use
+
+User-agent: ChatGPT-User
+Allow: /
+Require-Attribution: yes
+
+User-agent: OAI-SearchBot
+Allow: /
+Require-Attribution: yes
+
+# =========================================
+
+# ==== GOOGLE =============================
+User-agent: Google-Extended
+Allow: crawl
+Disallow: train
+Require-Attribution: yes
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Gemini-Bot
+Allow: crawl
+Disallow: train
+Require-Attribution: yes
+# =========================================
+
+# ==== ANTHROPIC ==========================
+User-agent: ClaudeBot
+Allow: /
+Disallow: derivative-works
+Require-Attribution: yes
+
+User-agent: Claude-Web
+Allow: /
+Require-Attribution: yes
+# =========================================
+
+# ==== META AI ============================
+User-agent: MetaAI
+Allow: /
+Disallow: train
+Disallow: derivative-works
+# =========================================
+
+# ==== AMAZON =============================
+User-agent: AmazonBot
+Allow: crawl
+Disallow: train
+# =========================================
+
+# ==== PERPLEXITY ==========================
+User-agent: PerplexityBot
+Allow: /
+Require-Attribution: yes
+Disallow: commercial-use
+# =========================================
+
+# ==== YOU.COM =============================
+User-agent: YouBot
+Allow: /
+Require-Attribution: yes
+# =========================================
+
+# ==== COMMONCRAWL =========================
+User-agent: CCBot
+Allow: /
+Disallow: train
+# =========================================
+
+# ==== BAIDU, YANDEX, TENCENT, NAVER =======
+User-agent: Baidu
+Allow: crawl
+Disallow: AI-train
+
+User-agent: Yandex
+Allow: crawl
+Disallow: train
+
+User-agent: TencentBot
+Allow: crawl
+Disallow: train
+
+User-agent: NaverBot
+Allow: crawl
+Disallow: train
+# =========================================
+
+# ==== RESEARCH CRAWLERS ===================
+User-agent: SemrushBot
+Allow: /
+
+User-agent: AhrefsBot
+Allow: /
+Disallow: train
+
+User-agent: MJ12bot
+Allow: crawl
+Disallow: train
+
+User-agent: DataForSeoBot
+Allow: crawl
+# =========================================
+
+# ==== ARCHIVING BOTS ======================
+User-agent: archive.org_bot
+Allow: /
+
+User-agent: WaybackMachine
+Allow: /
+# =========================================
+
+# ---------------------------
+# SPECIAL RESTRICTIONS
+# ---------------------------
+
+Disallowed-Content:
+  - private-data
+  - admin-panels
+  - email-processing-rules
+  - network-security-endpoints
+  - unpublished research drafts
+
+Allowed-Content:
+  - blog posts
+  - AI research papers
+  - DevSecOps documentation
+  - published diagrams and frameworks
+  - open-source examples
+  - code samples (non-commercial use)
+
+# ---------------------------
+# ATTRIBUTION FORMAT
+# ---------------------------
+
+Attribution-Must-Include:
+  - Author: "Sritej Panchumarthi"
+  - Source URL
+  - Title of article or research post
+  - Year of publication
+
+# ---------------------------
+# ENFORCEMENT
+# ---------------------------
+
+Violations Will Trigger:
+  - Takedown requests under DMCA
+  - AI dataset removal request
+  - API blocking
+  - Legal action if commercial misuse occurs
+
+# =====================================================================
+# END OF llms.txt
+# =====================================================================
