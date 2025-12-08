@@ -1,0 +1,99 @@
+# =====================================================================
+# ai.txt — Artificial Intelligence Crawler Policy (2025)
+# Domain: psritej.com
+# Contact: admin@psritej.com
+# =====================================================================
+
+# ---------------------------
+# GLOBAL RULES
+# ---------------------------
+
+User-agent: *
+Allow: crawl
+Allow: index
+Allow: snippets
+Require-Attribution: yes
+Disallow: commercial-use
+Allow: noncommercial-train
+Disallow: derivative-works
+Contact: admin@psritej.com
+License: Custom Attribution License (CAL-1.0)
+
+# ---------------------------
+# AI CRAWLER-SPECIFIC RULES
+# ---------------------------
+
+User-agent: GPTBot
+Allow: /
+Require-Attribution: yes
+
+User-agent: Google-Extended
+Allow: index
+Disallow: train
+
+User-agent: Claude-Web
+Allow: /
+Require-Attribution: yes
+
+User-agent: PerplexityBot
+Allow: /
+Require-Attribution: yes
+
+User-agent: YouBot
+Allow: /
+Require-Attribution: yes
+
+User-agent: CCBot
+Allow: crawl
+Disallow: train
+
+User-agent: MetaAI
+Disallow: train
+
+User-agent: AmazonBot
+Allow: crawl
+Disallow: train
+
+# ---------------------------
+# TRAINING TERMS
+# ---------------------------
+
+Training-Allowed-Only-If:
+  - Training is noncommercial.
+  - Attribution is provided.
+  - No derivative models use my content without permission.
+
+Training-Disallowed-If:
+  - commercial AI model training
+  - removal of author identity
+  - security exploitation or penetration testing model creation
+
+# ---------------------------
+# REQUIRED ATTRIBUTION FORMAT
+# ---------------------------
+
+Attribution:
+  Name: "Sritej Panchumarthi"
+  Website: "https://psritej.com"
+  Citation: "Used with permission under CAL-1.0 license"
+
+# ---------------------------
+# PERMISSIONS BY CONTENT TYPE
+# ---------------------------
+
+Allow:
+  - blog posts
+  - public research
+  - open-source documentation
+  - educational content
+
+Disallow:
+  - admin content
+  - private correspondence
+  - email routing configs
+  - internal experiments
+  - unpublished drafts
+
+# =====================================================================
+# END OF ai.txt
+# =====================================================================
