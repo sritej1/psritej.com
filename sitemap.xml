@@ -115,13 +115,34 @@
   </url>
 
   <!-- Blog Articles (expand as you create new directories/articles) -->
-  <!-- Example Entry: -->
-  <!--
   <url>
-    <loc>https://psritej.com/blog/article-1/index.html</loc>
+    <loc>https://psritej.com/blog/devops-cloud-architecture/index.html</loc>
+    <priority>0.85</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://psritej.com/blog/devsecops-blueprint/index.html</loc>
+    <priority>0.82</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://psritej.com/blog/ai-coding-assistants/index.html</loc>
     <priority>0.80</priority>
     <changefreq>weekly</changefreq>
   </url>
-  -->
+
+  <url>
+    <loc>https://psritej.com/blog/raspberry-pi-homelab/index.html</loc>
+    <priority>0.75</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://psritej.com/blog/show-your-talent/index.html</loc>
+    <priority>0.78</priority>
+    <changefreq>weekly</changefreq>
+  </url>
 
 </urlset>
