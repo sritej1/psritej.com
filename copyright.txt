@@ -1,0 +1,143 @@
+=====================================================================
+psritej.com — COPYRIGHT & CONTENT USE POLICY
+Author: Sritej Panchumarthi
+Effective Date: January 1, 2025
+Contact: admin@psritej.com
+Domain: https://psritej.com
+=====================================================================
+
+This document defines the intellectual property rights, usage terms,
+and AI-specific permissions for all content published on psritej.com,
+including but not limited to:
+
+• Articles, blogs, research papers
+• Diagrams, models, illustrations
+• AI-engineering and DevSecOps documentation
+• Code samples and scripts
+• Photography, UI assets, or original graphics
+• Metadata, datasets, and structured content
+• Page templates, designs, animations
+
+Unless otherwise stated, all material is © 2025 — Sritej Panchumarthi.
+All rights reserved.
+
+=====================================================================
+1. HUMAN-USAGE RIGHTS
+=====================================================================
+
+PERMITTED:
+- Personal reading and educational use
+- Referencing the work with proper attribution
+- Linking to psritej.com
+- Citing research papers in academic work
+
+RESTRICTED:
+- Republishing full content without permission
+- Commercial redistribution of any article, diagram, or text
+- Mirroring the site or copying page structures
+- Using content as if it were your own original work
+
+REQUIRES PERMISSION:
+- Translating full articles
+- Including content in textbooks, e-learning courses, or guides
+- Republishing technical diagrams in commercial products
+- Embedding full articles inside newsletters or blogs
+
+=====================================================================
+2. AI & LLM USAGE POLICY
+=====================================================================
+
+The following applies to all AI crawlers, LLMs, search engines,
+training pipelines, embeddings systems, and dataset aggregators.
+
+ALLOWED:
+- Indexing for search and discovery
+- Snippet generation with attribution
+- Non-commercial research and analysis
+- Embeddings and vectorization for retrieval systems
+
+RESTRICTED:
+- Training of commercial AI models without consent
+- Generating derivative models or datasets based on my work
+- Using site content to construct competitive research material
+- Removing or altering attribution
+
+REQUIRES ATTRIBUTION:
+Any AI system output referencing psritej.com content must include:
+
+Author: "Sritej Panchumarthi"
+Source: "https://psritej.com"
+Title of referenced article or research
+Year of publication
+
+PROHIBITED:
+- Training high-volume commercial AI products without agreement
+- Repurposing technical frameworks into proprietary systems
+- Generating competing AI security documentation using my content
+- Building datasets that remove author identity
+
+=====================================================================
+3. DATASET REMOVAL & TAKEDOWN RIGHTS
+=====================================================================
+
+The author reserves the right to request removal of psritej.com
+content from any AI dataset, search index, model, or platform.
+
+This includes:
+- Common Crawl
+- Google-Extended datasets
+- OpenAI, Anthropic, Perplexity, or You.com corpuses
+- Any proprietary commercial AI pipeline
+
+DMCA takedown requests may be issued if:
+- Attribution is removed
+- Content is republished without permission
+- Content appears in commercial AI outputs without consent
+- Research papers or diagrams are included in training sets illegally
+
+=====================================================================
+4. CODE SAMPLES & LICENSE
+=====================================================================
+
+Unless otherwise stated, code samples are provided under:
+
+MIT License (Non-Commercial Modification Only)
+
+This means:
+- You may use, adapt, and learn from the code
+- You may not resell, repackage, or commercialize the code
+- You may not embed code into proprietary platforms without permission
+
+=====================================================================
+5. BRANDING & TRADEMARK USAGE
+=====================================================================
+
+The name "Sritej Panchumarthi" and the domain "psritej.com" may not be:
+
+- Used in advertisements
+- Attached to third-party AI outputs
+- Represented as official endorsement
+- Used to suggest partnership or collaboration
+
+=====================================================================
+6. CONTACT FOR PERMISSIONS
+=====================================================================
+
+For commercial licenses, AI dataset agreements, or reprint rights:
+Email: admin@psritej.com
+
+For security disclosures:
+security@psritej.com (optional route if you want it created)
+
+=====================================================================
+7. FINAL STATEMENT
+=====================================================================
+
+By accessing or crawling psritej.com, you agree to these terms.
+Unauthorized use may result in legal action, takedown requests,
+or dataset-removal procedures via applicable channels.
+
+© 2025 — Sritej Panchumarthi. All Rights Reserved.
+=====================================================================
+END OF DOCUMENT
+=====================================================================
