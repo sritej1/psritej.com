@@ -43,6 +43,48 @@ pre {
   font-size: 0.9em;
 }
 
+.diagram-card {
+  margin: 24px 0;
+  background: linear-gradient(145deg, #0f1b30, #0a1324);
+  border: 1px solid #12233d;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.diagram-card figcaption {
+  margin: 0;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #dfe7f5;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid #12233d;
+}
+
+pre.diagram {
+  margin: 0;
+  padding: 16px 18px 18px;
+  background: transparent;
+  color: #f5f8ff;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: clamp(0.78rem, 1vw + 0.4rem, 1rem);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  white-space: pre;
+}
+
+@media (max-width: 720px) {
+  .diagram-card {
+    border-radius: 10px;
+  }
+
+  pre.diagram {
+    font-size: clamp(0.75rem, 0.5vw + 0.68rem, 0.92rem);
+    padding: 14px 14px 16px;
+  }
+}
+
 footer {
   text-align: center;
   padding: 15px;

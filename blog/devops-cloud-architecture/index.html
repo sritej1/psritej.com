@@ -6,6 +6,17 @@
     <title>The Complex AWS Problem to Solve for Humans — With Architecture Diagrams</title>
     <meta name="description" content="A human-friendly explanation of the hardest AWS architectural problems and how to solve them with layered design and diagrams." />
     <meta name="author" content="Sritej Panchumarthi" />
+    <meta property="og:title" content="The Complex AWS Problem to Solve for Humans — With Architecture Diagrams" />
+    <meta property="og:description" content="A human-friendly explanation of the hardest AWS architectural problems and how to solve them with layered design and diagrams." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://psritej.com/blog/devops-cloud-architecture/" />
+    <meta property="og:image" content="/assets/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Complex AWS Problem to Solve for Humans — With Architecture Diagrams" />
+    <meta name="twitter:description" content="A human-friendly explanation of the hardest AWS architectural problems and how to solve them with layered design and diagrams." />
+    <meta name="twitter:image" content="/assets/og-image.jpg" />
+    <link rel="canonical" href="https://psritej.com/blog/devops-cloud-architecture/" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
     <link rel="stylesheet" href="/css/style.css" />
 </head>
 
@@ -89,45 +100,49 @@ To fix this, we introduce the <strong>Human-Friendly AWS Layered Architecture</s
 Each layer has one responsibility, reducing human cognitive load.
 </p>
 
-<pre class="diagram">
-                      ┌────────────────────────────┐
-                      │        User Clients         │
-                      │ ─ Web, Mobile, API, IoT ─   │
-                      └──────────────┬─────────────┘
-                                     │
-                         ┌───────────▼───────────┐
-                         │   AWS Edge Services   │
-                         │ CloudFront | WAF | CDN│
-                         └───────────┬───────────┘
-                                     │
-                     ┌───────────────▼────────────────┐
-                     │     Application Entry Layer     │
-                     │ API Gateway | ALB | GraphQL     │
-                     └───────────────┬────────────────┘
-                                     │
-       ┌─────────────────────────────▼──────────────────────────────┐
-       │                      Compute Layer                          │
-       │ Lambda | ECS Fargate | EKS | Batch | Step Functions         │
-       └─────────────────────────────┬──────────────────────────────┘
-                                     │
-                    ┌────────────────▼────────────────┐
-                    │             Data Layer           │
-                    │ DynamoDB | Aurora | Redis/Valkey │
-                    │ OpenSearch | S3 | RDS            │
-                    └────────────────┬────────────────┘
-                                     │
-                    ┌────────────────▼────────────────┐
-                    │   Observability & Security      │
-                    │ CloudWatch | X-Ray | KMS | IAM   │
-                    │ GuardDuty | CloudTrail | Config  │
-                    └────────────────┬────────────────┘
-                                     │
-                    ┌────────────────▼────────────────┐
-                    │   Deployment & Automation Layer  │
-                    │ GitHub/GitLab → Terraform/IaC    │
-                    │ CodePipeline | SAM | CDK         │
-                    └─────────────────────────────────┘
-</pre>
+<figure class="diagram-card">
+    <figcaption>Layered AWS architecture with single-responsibility tiers</figcaption>
+    <pre class="diagram" aria-label="Layered AWS architecture diagram">
+┌────────────────────────────┐
+│        User Clients        │
+│  Web • Mobile • API • IoT  │
+└──────────────┬─────────────┘
+               │
+   ┌───────────▼───────────┐
+   │   AWS Edge Services   │
+   │ CloudFront • WAF • CDN│
+   └───────────┬───────────┘
+               │
+┌──────────────▼──────────────┐
+│    Application Entry Layer  │
+│ API Gateway • ALB • GraphQL │
+└──────────────┬──────────────┘
+               │
+┌──────────────▼──────────────┐
+│       Compute Layer         │
+│ Lambda • ECS • EKS • Batch  │
+│      Step Functions         │
+└──────────────┬──────────────┘
+               │
+┌──────────────▼──────────────┐
+│         Data Layer          │
+│ DynamoDB • Aurora • Redis   │
+│ OpenSearch • S3 • RDS       │
+└──────────────┬──────────────┘
+               │
+┌──────────────▼──────────────┐
+│  Observability & Security   │
+│ CloudWatch • X-Ray • KMS    │
+│ GuardDuty • CloudTrail      │
+└──────────────┬──────────────┘
+               │
+┌──────────────▼──────────────┐
+│ Deployment & Automation     │
+│ GitHub → Terraform/IaC      │
+│   CodePipeline • SAM • CDK  │
+└─────────────────────────────┘
+    </pre>
+</figure>
 
 </section>
 
@@ -151,22 +166,26 @@ Each layer has one responsibility, reducing human cognitive load.
 
 <h3>4.3 Compute Layer</h3>
 
-<pre class="diagram">
-       ┌───────────────────────┐
-       │    Compute Router     │
-       │ (API Gateway / ALB)   │
-       └───────────┬───────────┘
-                   │
-   ┌───────────────▼────────────────┬────────────────────┐
-   │             Lambda             │      ECS Fargate   │
-   │ (Micro-APIs, async events)    │ (Long-running apps) │
-   └───────────────┬───────────────┴────────────────────┘
-                   │
-         ┌─────────▼─────────┐
-         │        EKS        │
-         │ (Advanced mesh)   │
-         └───────────────────┘
-</pre>
+<figure class="diagram-card">
+    <figcaption>Compute decision path</figcaption>
+    <pre class="diagram" aria-label="Compute decision diagram">
+┌────────────────────────┐
+│     Compute Router     │
+│   API Gateway • ALB    │
+└─────────────┬──────────┘
+              │
+┌─────────────▼────────────┬──────────────┐
+│          Lambda          │  ECS Fargate │
+│ Micro-APIs • async work  │ Long-running │
+└─────────────┬────────────┴──────────────┘
+              │
+    ┌─────────▼────────┐
+    │        EKS       │
+    │   Mesh / AI /    │
+    │  Stateful needs  │
+    └──────────────────┘
+    </pre>
+</figure>
 
 <p><strong>The confusion comes from having too many compute choices.</strong></p>
 
@@ -214,17 +233,20 @@ Each layer has one responsibility, reducing human cognitive load.
 <section>
 <h2>5. Fully Integrated Architecture</h2>
 
-<pre class="diagram">
- User → CloudFront/WAF → API Gateway/ALB → Compute (Lambda/ECS/EKS)
-            ↓                    ↓                     ↓
-        Security            IAM/KMS/SCP           Environment Isolation
-            ↓                    ↓                     ↓
-             → Data Layer (Aurora, DynamoDB, Redis, S3)
-            ↓
-        Observability (CloudWatch, X-Ray, GuardDuty)
-            ↓
-   CI/CD Automation (GitHub/GitLab → CodePipeline → Deployment)
-</pre>
+<figure class="diagram-card">
+    <figcaption>End-to-end request and governance flow</figcaption>
+    <pre class="diagram" aria-label="Integrated AWS architecture flow">
+User → CloudFront/WAF → API Gateway/ALB → Compute (Lambda/ECS/EKS)
+          ↓                     ↓                    ↓
+      Security             IAM/KMS/SCP        Environment Isolation
+          ↓                     ↓                    ↓
+           → Data Layer (Aurora, DynamoDB, Redis, S3)
+          ↓
+      Observability (CloudWatch, X-Ray, GuardDuty)
+          ↓
+ CI/CD Automation (GitHub/GitLab → CodePipeline → Deploy)
+    </pre>
+</figure>
 
 </section>
 

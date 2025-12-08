@@ -15,7 +15,9 @@
   <meta property="og:description" content="Explore Sritej Panchumarthi's profile – expertise in DevSecOps, AI, and cloud infrastructure.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://psritej.com/about-me.html">
-  <meta property="og:image" content="https://psritej.com/assets/og-image.jpg"> <!-- Optional: add your image -->
+  <meta property="og:image" content="/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/assets/og-image.jpg">
 
   <!-- Canonical & Sitemap reference -->
   <link rel="canonical" href="https://psritej.com/about-me.html" />
@@ -23,6 +25,7 @@
 
   <!-- Font and style -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
   <style>
     body {
       margin: 0;
@@ -33,16 +36,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 24px;
       background-image: radial-gradient(circle at 20% 20%, #1b1e30, #0f111a);
     }
     .container {
       text-align: center;
-      padding: 40px;
+      padding: 32px;
       background: rgba(0, 0, 0, 0.6);
       border: 2px solid #1e90ff;
       border-radius: 16px;
       box-shadow: 0 0 20px #1e90ff33;
+      width: min(520px, 100%);
     }
     h1 {
       font-size: 2.5rem;
