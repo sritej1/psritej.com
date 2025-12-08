@@ -1,7 +1,7 @@
 # =====================================================================
 # ai.txt — Artificial Intelligence Crawler Policy (2025)
 # Domain: psritej.com
-# Contact: admin@psritej.com
+# Contact: contact@psritej.com
 # =====================================================================
 
 # ---------------------------
@@ -16,7 +16,7 @@ Require-Attribution: yes
 Disallow: commercial-use
 Allow: noncommercial-train
 Disallow: derivative-works
-Contact: admin@psritej.com
+Contact: contact@psritej.com
 License: Custom Attribution License (CAL-1.0)
 
 # ---------------------------
