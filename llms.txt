@@ -2,7 +2,7 @@
 # llms.txt — Large Language Model Access & Usage Policy for psritej.com
 # Specification Version: Experimental (2025)
 # Author: Sritej Panchumarthi
-# Contact: admin@psritej.com
+# Contact: contact@psritej.com
 # Domain: https://psritej.com
 # =====================================================================
 
@@ -19,7 +19,7 @@ Allow-Snippets: yes
 Disallow-Commercial-Use: yes
 Disallow-Model-Training: no    # You allow training ONLY WITH attribution
 License: Custom Attribution License (CAL-1.0)
-Contact: admin@psritej.com
+Contact: contact@psritej.com
 
 # ---------------------------
 # TRAINING CONDITIONS
