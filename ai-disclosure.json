@@ -1,0 +1,32 @@
+{
+  "domain": "psritej.com",
+  "owner": "Sritej Panchumarthi",
+  "contact": "admin@psritej.com",
+  "ai_policy_version": "2025.1",
+  "training_allowed": false,
+  "embedding_allowed": true,
+  "indexing_allowed": true,
+  "require_attribution": true,
+  "commercial_use": "prohibited",
+  "license": "Custom Attribution License (CAL-1.0)",
+  "content_types_disallowed": [
+    "admin pages",
+    "private correspondence",
+    "email routing rules",
+    "unpublished drafts",
+    "personal communications"
+  ],
+  "content_types_allowed": [
+    "blogs",
+    "research papers",
+    "AI frameworks",
+    "DevSecOps documentation",
+    "public code samples"
+  ],
+  "violation_actions": [
+    "DMCA takedown",
+    "dataset removal request",
+    "legal escalation"
+  ],
+  "timestamp_generated": "2025-01-01T00:00:00Z"
+}
