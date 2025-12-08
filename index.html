@@ -15,13 +15,20 @@
   <meta property="og:description" content="Senior DevOps Engineer and AI researcher. High-availability AWS, secure CI/CD pipelines, and practical AI/ML frameworks." />
   <meta property="og:url" content="https://psritej.com/" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://psritej.com/assets/og-image.jpg" />
+  <meta property="og:image" content="/assets/og-image.svg" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sritej Panchumarthi – Cloud Security, DevSecOps & AI Research" />
+  <meta name="twitter:description" content="Senior DevOps Engineer and AI researcher. High-availability AWS, secure CI/CD pipelines, and practical AI/ML frameworks." />
+  <meta name="twitter:image" content="/assets/og-image.svg" />
 
   <!-- Canonical -->
   <link rel="canonical" href="https://psritej.com/" />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
 
   <style>
     :root {
@@ -64,6 +71,7 @@
       align-items:center;
       justify-content:space-between;
       gap:16px;
+      flex-wrap:wrap;
     }
     .brand {
       display:flex;
@@ -75,14 +83,12 @@
     .brand-logo {
       width:28px; height:28px;
       border-radius:8px;
-      background:radial-gradient(circle at 20% 0%, var(--accent), transparent 60%);
-      display:flex; align-items:center; justify-content:center;
-      font-family:"Fira Code", monospace;
-      font-size:14px;
-      color:#020617;
       border:1px solid rgba(148,163,184,0.7);
       box-shadow:0 0 24px rgba(34,211,238,0.35);
+      background:#020617;
+      padding:3px;
     }
+    .brand-logo img { width:100%; height:100%; border-radius:6px; display:block; }
     nav.main-nav {
       display:flex;
       flex-wrap:wrap;
@@ -291,6 +297,7 @@
       header.site-header { position:sticky; }
       .header-inner { flex-direction:column; align-items:flex-start; }
       nav.main-nav { justify-content:flex-start; }
+      .hero { padding-top:36px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -327,7 +334,9 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
-        <div class="brand-logo">SP</div>
+        <div class="brand-logo">
+          <img src="/assets/logo.svg" alt="Sritej Panchumarthi logo" width="28" height="28" />
+        </div>
         <div>
           <div>Sritej Panchumarthi</div>
           <div style="font-size:0.75rem;color:var(--muted);">

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Showcase Article I'd Publish to Prove My Craft | Blog – Sritej Panchumarthi</title>
+  <meta name="description" content="My flagship article idea: a build-log for a self-healing, cost-aware cloud platform that proves DevSecOps, SRE, and AI chops in one cohesive story." />
+  <meta property="og:title" content="The Showcase Article I'd Publish to Prove My Craft" />
+  <meta property="og:description" content="A build-log for a self-healing, cost-aware cloud platform that proves DevSecOps, SRE, and AI chops in one cohesive story." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://psritej.com/blog/show-your-talent/" />
+  <meta property="og:image" content="/assets/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Showcase Article I'd Publish to Prove My Craft" />
+  <meta name="twitter:description" content="A build-log for a self-healing, cost-aware cloud platform that proves DevSecOps, SRE, and AI chops in one cohesive story." />
+  <meta name="twitter:image" content="/assets/og-image.svg" />
+  <link rel="canonical" href="https://psritej.com/blog/show-your-talent/" />
+  <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    body { margin: 0; font-family: Inter, system-ui, sans-serif; background:#020617; color:#e5e7eb; }
+    a{ color:#38bdf8; text-decoration:none; } a:hover{text-decoration:underline;}
+    header{padding:18px 22px;border-bottom:1px solid rgba(15,23,42,0.9);background:rgba(5,7,20,0.95);backdrop-filter:blur(18px);position:sticky;top:0;z-index:10;}
+    .header-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+    .brand{font-family:"Fira Code",monospace;color:#38bdf8;font-size:0.9rem;}
+    main{max-width:900px;margin:0 auto;padding:26px 22px 40px;}
+    h1{font-size:clamp(2rem,3vw,2.4rem);margin-bottom:10px;}
+    .meta{font-size:0.85rem;color:#9ca3af;margin-bottom:20px;}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+    .pill{border-radius:999px;padding:4px 10px;border:1px solid rgba(148,163,184,0.6);background:rgba(15,23,42,0.8);font-size:0.8rem;}
+    article p{margin:0 0 14px 0;line-height:1.7;font-size:0.98rem;}
+    article h2{margin-top:24px;margin-bottom:10px;font-size:1.25rem;}
+    article ul{margin:0 0 14px 20px;}
+    article code{background:rgba(148,163,184,0.12);padding:2px 6px;border-radius:6px;font-family:"Fira Code",monospace;font-size:0.9rem;}
+    .callout{border:1px solid rgba(56,189,248,0.3);background:rgba(5,7,20,0.7);padding:12px 14px;border-radius:10px;margin:16px 0;color:#c7d2fe;}
+    footer{margin-top:32px;font-size:0.8rem;color:#9ca3af;text-align:center;}
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="brand">&lt; psritej.com / blog / show-your-talent /&gt;</div>
+    <a href="/blog.html">← Back to blog</a>
+  </div>
+</header>
+
+<main>
+  <h1>The Showcase Article I'd Publish to Prove My Craft</h1>
+  <div class="meta">
+    A concrete build-log for a self-healing, cost-aware cloud platform that demonstrates architecture, SRE, DevSecOps, and AI depth in one narrative.
+  </div>
+  <div class="pill-row">
+    <span class="pill">DevSecOps</span>
+    <span class="pill">SRE</span>
+    <span class="pill">AWS</span>
+    <span class="pill">AI Agents</span>
+  </div>
+
+  <article>
+    <p>
+      If I had to publish a single article to show my craft, it would be a build-log of a
+      production-grade platform assembled in a weekend: multi-AZ, self-healing, policy-driven,
+      and cheap enough to run on a personal credit card. Think of it as a transparent technical
+      audition where every design choice is explained, instrumented, and tested.
+    </p>
+
+    <h2>The Premise</h2>
+    <p>
+      Ship a small but real service — an API that scores deployment risk — on AWS with
+      guardrails and observability baked in. The post would include diagrams, Terraform
+      snippets, pipeline YAML, and Grafana panels so readers can clone, deploy, and learn.
+    </p>
+
+    <h2>Architecture at a Glance</h2>
+    <div class="callout">
+      API Gateway → Lambda (Rust) → DynamoDB → EventBridge → Step Functions (automated remediation)
+    </div>
+    <p>
+      The article would unpack why each choice matters: Lambda to keep ops light, DynamoDB
+      for predictable costs, EventBridge for loose coupling, and Step Functions to codify
+      self-healing playbooks. A diagram would highlight blast-radius boundaries, least-privilege
+      IAM roles, and how customer data stays isolated.
+    </p>
+
+    <h2>DevSecOps in Practice</h2>
+    <ul>
+      <li>Pipeline with <code>trivy</code> + <code>tfsec</code> + <code>cfn-guard</code> gates, plus OpenID Connect to avoid long-lived keys.</li>
+      <li>Signed artifacts and SBOMs shipped to an S3 bucket with bucket keys and WORM retention.</li>
+      <li>Preview environments per PR using Terraform workspaces and short-lived DNS records.</li>
+    </ul>
+
+    <h2>SRE Hooks</h2>
+    <ul>
+      <li>SLOs: p99 latency &lt; 250ms, error budget tied to automated deployment freezes.</li>
+      <li>Golden signals piped to CloudWatch Metrics + Grafana Cloud, with log sampling for cost control.</li>
+      <li>Game-day script: intentionally break DynamoDB throughput to show alert-to-remediation flow.</li>
+    </ul>
+
+    <h2>AI Assistance Done Right</h2>
+    <p>
+      Instead of “AI for buzzwords,” I’d show a thin agent that reads alerts and drafts a response
+      play, constrained by a policy file and human approval. The repo would include the prompt,
+      guardrails, and rollback procedure so teams can trust, but verify, the automation.
+    </p>
+
+    <h2>What Readers Get</h2>
+    <ul>
+      <li>A minimal, copy-pastable Terraform stack with tags, budgets, and deletion protection.</li>
+      <li>GitLab CI YAML that balances velocity and security without 40-minute builds.</li>
+      <li>A public Grafana dashboard JSON and sample incidents to replay.</li>
+      <li>Cost notes: exact monthly spend and where to tweak to hit a lower ceiling.</li>
+    </ul>
+
+    <p>
+      By the end, readers can judge the craft: pragmatic architecture, principled security,
+      and empathetic documentation. That’s the article I’d publish to show what I bring
+      to the table.
+    </p>
+  </article>
+
+  <footer>
+    © 2025 Sritej Panchumarthi · <a href="/blog.html">Back to blog</a>
+  </footer>
+</main>
+</body>
+</html>
